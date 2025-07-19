@@ -1,0 +1,26 @@
+{% extends "shop/base.html" %}
+
+
+    {% block title %}
+        Categories
+    {% endblock title %}
+
+
+  {% block main %}
+    
+
+                <h1>all_categories</h1>
+                <ol>
+                    {% for cat in categories  %}
+
+                        <li>
+                        <a href="categories/{{cat.slug}}"> {{cat.name}}</a>
+                        
+                        </li>
+
+                    {% endfor %}
+                </ol>
+
+
+
+  {% endblock main %}

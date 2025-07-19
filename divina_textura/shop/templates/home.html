@@ -1,0 +1,58 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Acasă{% endblock %}
+
+{% block content %}
+<style>
+    .icon-cross-home {
+        position: absolute;
+        top: 100px;  /* puțin sub header (care are 60px padding) */
+        left: 30px;
+        width: 60px;
+        height: auto;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .icon-cross-home:hover {
+        transform: scale(1.2);
+    }
+
+    .home-text-container {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'EB Garamond', serif;
+        color: white;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        padding: 0 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .home-text-container h1 {
+        font-size: 4rem;
+        margin-bottom: 0.3em;
+    }
+
+    .home-text-container p {
+        font-size: 1.8rem;
+        font-style: italic;
+    }
+</style>
+
+<img src="https://i.postimg.cc/5t1fj1s7/Cross1.png" 
+     alt="Categorii" 
+     class="icon-cross-home"
+     title="Vezi Categorii"
+     onclick="window.location.href='{% url 'categories_url' %}'" />
+
+<div class="home-text-container">
+    <h1>Divina Textura</h1>
+    <p>Scripturam proferimus, fidem gerentes, sub gloria Dei</p>
+</div>
+{% endblock %}

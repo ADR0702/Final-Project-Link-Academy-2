@@ -1,0 +1,1618 @@
+[
+    {
+        "model": "admin.logentry",
+        "pk": 1,
+        "fields": {
+            "action_time": "2025-05-16T15:53:32.476Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "Product object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 2,
+        "fields": {
+            "action_time": "2025-05-16T16:09:11.729Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "Sosete scumpe",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 3,
+        "fields": {
+            "action_time": "2025-05-16T16:28:19.096Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "1",
+            "object_repr": "Category object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 4,
+        "fields": {
+            "action_time": "2025-05-16T16:28:35.431Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "1",
+            "object_repr": "Category object (1)",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2025-05-16T16:49:19.328Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "Sosete scumpe",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2025-05-16T16:50:13.802Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "2",
+            "object_repr": "materiale",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2025-05-16T16:51:19.802Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "Sosete ieftine",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Slug\", \"Category\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 8,
+        "fields": {
+            "action_time": "2025-05-16T17:03:05.631Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "3",
+            "object_repr": "masini scumpe",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 9,
+        "fields": {
+            "action_time": "2025-05-16T17:09:09.416Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "Sosete scumpe",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Slug\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 10,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.224Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "12",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 11,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.225Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "11",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 12,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.225Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "10",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 13,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.225Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "9",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 14,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.225Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "8",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 15,
+        "fields": {
+            "action_time": "2025-05-21T16:21:36.225Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "7",
+            "object_repr": "Essence Mascara Lash Princess",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 16,
+        "fields": {
+            "action_time": "2025-05-21T17:37:41.459Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "5",
+            "object_repr": "Beauty2",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Slug\"]}}]"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 4,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 4,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 4,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 4,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 5,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 5,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 5,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 5,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 6,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 6,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 6,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 6,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add product",
+            "content_type": 7,
+            "codename": "add_product"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change product",
+            "content_type": 7,
+            "codename": "change_product"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete product",
+            "content_type": 7,
+            "codename": "delete_product"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view product",
+            "content_type": 7,
+            "codename": "view_product"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add category",
+            "content_type": 8,
+            "codename": "add_category"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change category",
+            "content_type": 8,
+            "codename": "change_category"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete category",
+            "content_type": 8,
+            "codename": "delete_category"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view category",
+            "content_type": 8,
+            "codename": "view_category"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$VniXEDyYJ69k1wX8h77am6$CLN+/2O7nTtG9XWMCbyJbxrZhYFfIvGCRPutPtG41Qk=",
+            "last_login": "2025-05-21T17:36:25.852Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@admin.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2025-05-16T15:34:33.345Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+
+ 
+    {
+        "model": "sessions.session",
+        "pk": "etwnaoym9up0g5d6vwhav9fq9sowjv39",
+        "fields": {
+            "session_data": ".eJxVjDsOwjAQBe_iGln-xD9Kes5grXdtHEC2FCcV4u4QKQW0b2bei0XY1hq3kZc4EzszyU6_WwJ85LYDukO7dY69rcuc-K7wgw5-7ZSfl8P9O6gw6rc2mFwitA51phD0VKTz4NEn71FLEMFM2RAJVbQVAqXS6Cg4Y0PJVhF7fwDyDTfn:1uFxHq:UmQdE9p5GkNRqva-SrS56fJU6T_FTscaHpx2EqWcEbk",
+            "expire_date": "2025-05-30T15:47:50.910Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "k44fxiqw2oal0j0crw1vbu0mux6ywd89",
+        "fields": {
+            "session_data": ".eJxVjDsOwjAQBe_iGln-xD9Kes5grXdtHEC2FCcV4u4QKQW0b2bei0XY1hq3kZc4EzszyU6_WwJ85LYDukO7dY69rcuc-K7wgw5-7ZSfl8P9O6gw6rc2mFwitA51phD0VKTz4NEn71FLEMFM2RAJVbQVAqXS6Cg4Y0PJVhF7fwDyDTfn:1uHnMf:OFDChroZzkvEn8EiWjHk3cMQX2j836bjer7XiySEipA",
+            "expire_date": "2025-06-04T17:36:25.853Z"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 1,
+        "fields": {
+            "name": "sosete",
+            "description": "Orice fel de sosete scumpe sau ieftine",
+            "slug": "sosete"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 2,
+        "fields": {
+            "name": "materiale",
+            "description": "bumbac 100% made in bangladesh",
+            "slug": "materiale"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 3,
+        "fields": {
+            "name": "masini scumpe",
+            "description": "2 secunde 76.5km/h",
+            "slug": "masini-scumpe"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 4,
+        "fields": {
+            "name": "Beauty",
+            "description": "",
+            "slug": "beauty"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 5,
+        "fields": {
+            "name": "Beauty2",
+            "description": "ceva sa fie",
+            "slug": "beauty2"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 6,
+        "fields": {
+            "name": "Fragrances",
+            "description": "",
+            "slug": "fragrances"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 7,
+        "fields": {
+            "name": "Furniture",
+            "description": "",
+            "slug": "furniture"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 8,
+        "fields": {
+            "name": "Groceries",
+            "description": "",
+            "slug": "groceries"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 9,
+        "fields": {
+            "name": "Home Decoration",
+            "description": "",
+            "slug": "home-decoration"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 10,
+        "fields": {
+            "name": "Kitchen Accessories",
+            "description": "",
+            "slug": "kitchen-accessories"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 11,
+        "fields": {
+            "name": "Laptops",
+            "description": "",
+            "slug": "laptops"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 12,
+        "fields": {
+            "name": "Mens Shirts",
+            "description": "",
+            "slug": "mens-shirts"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 13,
+        "fields": {
+            "name": "Mens Shoes",
+            "description": "",
+            "slug": "mens-shoes"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 14,
+        "fields": {
+            "name": "Mens Watches",
+            "description": "",
+            "slug": "mens-watches"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 15,
+        "fields": {
+            "name": "Mobile Accessories",
+            "description": "",
+            "slug": "mobile-accessories"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 16,
+        "fields": {
+            "name": "Motorcycle",
+            "description": "",
+            "slug": "motorcycle"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 17,
+        "fields": {
+            "name": "Skin Care",
+            "description": "",
+            "slug": "skin-care"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 18,
+        "fields": {
+            "name": "Smartphones",
+            "description": "",
+            "slug": "smartphones"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 19,
+        "fields": {
+            "name": "Sports Accessories",
+            "description": "",
+            "slug": "sports-accessories"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 20,
+        "fields": {
+            "name": "Sunglasses",
+            "description": "",
+            "slug": "sunglasses"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 21,
+        "fields": {
+            "name": "Tablets",
+            "description": "",
+            "slug": "tablets"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 22,
+        "fields": {
+            "name": "Tops",
+            "description": "",
+            "slug": "tops"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 23,
+        "fields": {
+            "name": "Vehicle",
+            "description": "",
+            "slug": "vehicle"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 24,
+        "fields": {
+            "name": "Womens Bags",
+            "description": "",
+            "slug": "womens-bags"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 25,
+        "fields": {
+            "name": "Womens Dresses",
+            "description": "",
+            "slug": "womens-dresses"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 26,
+        "fields": {
+            "name": "Womens Jewellery",
+            "description": "",
+            "slug": "womens-jewellery"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 27,
+        "fields": {
+            "name": "Womens Shoes",
+            "description": "",
+            "slug": "womens-shoes"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 28,
+        "fields": {
+            "name": "Womens Watches",
+            "description": "",
+            "slug": "womens-watches"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 1,
+        "fields": {
+            "name": "Sosete ieftine",
+            "slug": "sosete-ieftine",
+            "description": "Foarte bune pentru invatat, in orice anotimp!!!",
+            "price": "3.00",
+            "image": "product_images/sosete-copii-cu-model-mingi-de-fotbal-conte-kids-tip-top-396-gri-1043-9809.webp",
+            "created": "2025-05-16T16:51:19.801Z",
+            "updated": "2025-05-16T15:53:32.475Z",
+            "category": 1
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 2,
+        "fields": {
+            "name": "Sosete scumpe",
+            "slug": "sosete-scumpe",
+            "description": "Nu este recomandat sarakilor (gluma)",
+            "price": "200.00",
+            "image": "product_images/sosete_scumpe.webp",
+            "created": "2025-05-16T17:09:09.415Z",
+            "updated": "2025-05-16T16:09:11.728Z",
+            "category": 1
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 3,
+        "fields": {
+            "name": "Produs din linie de comanda",
+            "slug": "produs-din-linie-de-comanda",
+            "description": "python manage.py shell",
+            "price": "10.00",
+            "image": "",
+            "created": "2025-05-16T17:27:14.704Z",
+            "updated": "2025-05-16T17:27:14.704Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 4,
+        "fields": {
+            "name": "Produsul 18",
+            "slug": "produsul-18",
+            "description": "",
+            "price": "18.00",
+            "image": "",
+            "created": "2025-05-16T17:40:51.259Z",
+            "updated": "2025-05-16T17:40:51.259Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 5,
+        "fields": {
+            "name": "Produsul 13",
+            "slug": "produsul-13",
+            "description": "",
+            "price": "13.00",
+            "image": "",
+            "created": "2025-05-16T17:42:22.635Z",
+            "updated": "2025-05-16T17:42:22.635Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 6,
+        "fields": {
+            "name": "Produsul 22",
+            "slug": "produsul-22",
+            "description": "",
+            "price": "22.00",
+            "image": "",
+            "created": "2025-05-16T17:42:28.578Z",
+            "updated": "2025-05-16T17:42:28.578Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 13,
+        "fields": {
+            "name": "Essence Mascara Lash Princess",
+            "slug": "essence-mascara-lash-princess",
+            "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+            "price": "9.99",
+            "image": "product_images/Essence_Mascara_Lash_Princess_hhXRksO",
+            "created": "2025-05-21T16:22:01.474Z",
+            "updated": "2025-05-21T16:22:01.473Z",
+            "category": 4
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 14,
+        "fields": {
+            "name": "Eyeshadow Palette with Mirror",
+            "slug": "eyeshadow-palette-with-mirror",
+            "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+            "price": "19.99",
+            "image": "product_images/Eyeshadow_Palette_with_Mirror",
+            "created": "2025-05-21T16:25:25.778Z",
+            "updated": "2025-05-21T16:25:25.777Z",
+            "category": 4
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 15,
+        "fields": {
+            "name": "Powder Canister",
+            "slug": "powder-canister",
+            "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
+            "price": "14.99",
+            "image": "product_images/Powder_Canister",
+            "created": "2025-05-21T16:29:40.629Z",
+            "updated": "2025-05-21T16:29:40.628Z",
+            "category": 4
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 16,
+        "fields": {
+            "name": "Red Lipstick",
+            "slug": "red-lipstick",
+            "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+            "price": "12.99",
+            "image": "product_images/Red_Lipstick",
+            "created": "2025-05-21T16:29:44.205Z",
+            "updated": "2025-05-21T16:29:44.204Z",
+            "category": 4
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 17,
+        "fields": {
+            "name": "Red Nail Polish",
+            "slug": "red-nail-polish",
+            "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
+            "price": "8.99",
+            "image": "product_images/Red_Nail_Polish",
+            "created": "2025-05-21T16:29:47.793Z",
+            "updated": "2025-05-21T16:29:47.791Z",
+            "category": 4
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 18,
+        "fields": {
+            "name": "Calvin Klein CK One",
+            "slug": "calvin-klein-ck-one",
+            "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
+            "price": "49.99",
+            "image": "product_images/Calvin_Klein_CK_One",
+            "created": "2025-05-21T16:29:50.348Z",
+            "updated": "2025-05-21T16:29:50.347Z",
+            "category": 6
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 19,
+        "fields": {
+            "name": "Chanel Coco Noir Eau De",
+            "slug": "chanel-coco-noir-eau-de",
+            "description": "Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.",
+            "price": "129.99",
+            "image": "product_images/Chanel_Coco_Noir_Eau_De",
+            "created": "2025-05-21T16:29:52.913Z",
+            "updated": "2025-05-21T16:29:52.912Z",
+            "category": 6
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 20,
+        "fields": {
+            "name": "Dior J'adore",
+            "slug": "dior-j'adore",
+            "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+            "price": "89.99",
+            "image": "product_images/Dior_Jadore",
+            "created": "2025-05-21T16:29:58.484Z",
+            "updated": "2025-05-21T16:29:58.483Z",
+            "category": 6
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 21,
+        "fields": {
+            "name": "Dolce Shine Eau de",
+            "slug": "dolce-shine-eau-de",
+            "description": "Dolce Shine by Dolce & Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
+            "price": "69.99",
+            "image": "product_images/Dolce_Shine_Eau_de",
+            "created": "2025-05-21T16:30:01.063Z",
+            "updated": "2025-05-21T16:30:01.061Z",
+            "category": 6
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 22,
+        "fields": {
+            "name": "Gucci Bloom Eau de",
+            "slug": "gucci-bloom-eau-de",
+            "description": "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
+            "price": "79.99",
+            "image": "product_images/Gucci_Bloom_Eau_de",
+            "created": "2025-05-21T16:30:04.633Z",
+            "updated": "2025-05-21T16:30:04.631Z",
+            "category": 6
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 23,
+        "fields": {
+            "name": "Annibale Colombo Bed",
+            "slug": "annibale-colombo-bed",
+            "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
+            "price": "1899.99",
+            "image": "product_images/Annibale_Colombo_Bed",
+            "created": "2025-05-21T16:30:10.204Z",
+            "updated": "2025-05-21T16:30:10.202Z",
+            "category": 7
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 24,
+        "fields": {
+            "name": "Annibale Colombo Sofa",
+            "slug": "annibale-colombo-sofa",
+            "description": "The Annibale Colombo Sofa is a sophisticated and comfortable seating option, featuring exquisite design and premium upholstery for your living room.",
+            "price": "2499.99",
+            "image": "product_images/Annibale_Colombo_Sofa",
+            "created": "2025-05-21T16:30:12.772Z",
+            "updated": "2025-05-21T16:30:12.770Z",
+            "category": 7
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 25,
+        "fields": {
+            "name": "Bedside Table African Cherry",
+            "slug": "bedside-table-african-cherry",
+            "description": "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
+            "price": "299.99",
+            "image": "product_images/Bedside_Table_African_Cherry",
+            "created": "2025-05-21T16:30:16.446Z",
+            "updated": "2025-05-21T16:30:16.445Z",
+            "category": 7
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 26,
+        "fields": {
+            "name": "Knoll Saarinen Executive Conference Chair",
+            "slug": "knoll-saarinen-executive-conference-chair",
+            "description": "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
+            "price": "499.99",
+            "image": "product_images/Knoll_Saarinen_Executive_Conference_Chair",
+            "created": "2025-05-21T16:30:20.197Z",
+            "updated": "2025-05-21T16:30:20.196Z",
+            "category": 7
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 27,
+        "fields": {
+            "name": "Wooden Bathroom Sink With Mirror",
+            "slug": "wooden-bathroom-sink-with-mirror",
+            "description": "The Wooden Bathroom Sink with Mirror is a unique and stylish addition to your bathroom, featuring a wooden sink countertop and a matching mirror.",
+            "price": "799.99",
+            "image": "product_images/Wooden_Bathroom_Sink_With_Mirror",
+            "created": "2025-05-21T16:30:23.762Z",
+            "updated": "2025-05-21T16:30:23.761Z",
+            "category": 7
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 28,
+        "fields": {
+            "name": "Apple",
+            "slug": "apple",
+            "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+            "price": "1.99",
+            "image": "product_images/Apple",
+            "created": "2025-05-21T16:30:29.328Z",
+            "updated": "2025-05-21T16:30:29.326Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 29,
+        "fields": {
+            "name": "Beef Steak",
+            "slug": "beef-steak",
+            "description": "High-quality beef steak, great for grilling or cooking to your preferred level of doneness.",
+            "price": "12.99",
+            "image": "product_images/Beef_Steak",
+            "created": "2025-05-21T16:30:31.893Z",
+            "updated": "2025-05-21T16:30:31.891Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 30,
+        "fields": {
+            "name": "Cat Food",
+            "slug": "cat-food",
+            "description": "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
+            "price": "8.99",
+            "image": "product_images/Cat_Food",
+            "created": "2025-05-21T16:30:35.632Z",
+            "updated": "2025-05-21T16:30:35.631Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 31,
+        "fields": {
+            "name": "Chicken Meat",
+            "slug": "chicken-meat",
+            "description": "Fresh and tender chicken meat, suitable for various culinary preparations.",
+            "price": "9.99",
+            "image": "product_images/Chicken_Meat",
+            "created": "2025-05-21T16:30:40.198Z",
+            "updated": "2025-05-21T16:30:40.196Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 32,
+        "fields": {
+            "name": "Cooking Oil",
+            "slug": "cooking-oil",
+            "description": "Versatile cooking oil suitable for frying, sautéing, and various culinary applications.",
+            "price": "4.99",
+            "image": "product_images/Cooking_Oil",
+            "created": "2025-05-21T16:30:43.766Z",
+            "updated": "2025-05-21T16:30:43.764Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 33,
+        "fields": {
+            "name": "Cucumber",
+            "slug": "cucumber",
+            "description": "Crisp and hydrating cucumbers, ideal for salads, snacks, or as a refreshing side.",
+            "price": "1.49",
+            "image": "product_images/Cucumber",
+            "created": "2025-05-21T16:30:49.342Z",
+            "updated": "2025-05-21T16:30:49.341Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 34,
+        "fields": {
+            "name": "Dog Food",
+            "slug": "dog-food",
+            "description": "Specially formulated dog food designed to provide essential nutrients for your canine companion.",
+            "price": "10.99",
+            "image": "product_images/Dog_Food",
+            "created": "2025-05-21T16:30:55.087Z",
+            "updated": "2025-05-21T16:30:55.086Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 35,
+        "fields": {
+            "name": "Eggs",
+            "slug": "eggs",
+            "description": "Fresh eggs, a versatile ingredient for baking, cooking, or breakfast.",
+            "price": "2.99",
+            "image": "product_images/Eggs",
+            "created": "2025-05-21T16:30:57.645Z",
+            "updated": "2025-05-21T16:30:57.644Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 36,
+        "fields": {
+            "name": "Fish Steak",
+            "slug": "fish-steak",
+            "description": "Quality fish steak, suitable for grilling, baking, or pan-searing.",
+            "price": "14.99",
+            "image": "product_images/Fish_Steak",
+            "created": "2025-05-21T16:31:01.207Z",
+            "updated": "2025-05-21T16:31:01.206Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 37,
+        "fields": {
+            "name": "Green Bell Pepper",
+            "slug": "green-bell-pepper",
+            "description": "Fresh and vibrant green bell pepper, perfect for adding color and flavor to your dishes.",
+            "price": "1.29",
+            "image": "product_images/Green_Bell_Pepper",
+            "created": "2025-05-21T16:31:03.779Z",
+            "updated": "2025-05-21T16:31:03.778Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 38,
+        "fields": {
+            "name": "Green Chili Pepper",
+            "slug": "green-chili-pepper",
+            "description": "Spicy green chili pepper, ideal for adding heat to your favorite recipes.",
+            "price": "0.99",
+            "image": "product_images/Green_Chili_Pepper",
+            "created": "2025-05-21T16:31:06.488Z",
+            "updated": "2025-05-21T16:31:06.486Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 39,
+        "fields": {
+            "name": "Honey Jar",
+            "slug": "honey-jar",
+            "description": "Pure and natural honey in a convenient jar, perfect for sweetening beverages or drizzling over food.",
+            "price": "6.99",
+            "image": "product_images/Honey_Jar",
+            "created": "2025-05-21T16:31:10.220Z",
+            "updated": "2025-05-21T16:31:10.218Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 40,
+        "fields": {
+            "name": "Ice Cream",
+            "slug": "ice-cream",
+            "description": "Creamy and delicious ice cream, available in various flavors for a delightful treat.",
+            "price": "5.49",
+            "image": "product_images/Ice_Cream",
+            "created": "2025-05-21T16:31:16.113Z",
+            "updated": "2025-05-21T16:31:16.112Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 41,
+        "fields": {
+            "name": "Juice",
+            "slug": "juice",
+            "description": "Refreshing fruit juice, packed with vitamins and great for staying hydrated.",
+            "price": "3.99",
+            "image": "product_images/Juice",
+            "created": "2025-05-21T16:31:20.674Z",
+            "updated": "2025-05-21T16:31:20.672Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 42,
+        "fields": {
+            "name": "Kiwi",
+            "slug": "kiwi",
+            "description": "Nutrient-rich kiwi, perfect for snacking or adding a tropical twist to your dishes.",
+            "price": "2.49",
+            "image": "product_images/Kiwi",
+            "created": "2025-05-21T16:31:24.234Z",
+            "updated": "2025-05-21T16:31:24.233Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 43,
+        "fields": {
+            "name": "Lemon",
+            "slug": "lemon",
+            "description": "Zesty and tangy lemons, versatile for cooking, baking, or making refreshing beverages.",
+            "price": "0.79",
+            "image": "product_images/Lemon",
+            "created": "2025-05-21T16:31:29.800Z",
+            "updated": "2025-05-21T16:31:29.798Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 44,
+        "fields": {
+            "name": "Milk",
+            "slug": "milk",
+            "description": "Fresh and nutritious milk, a staple for various recipes and daily consumption.",
+            "price": "3.49",
+            "image": "product_images/Milk",
+            "created": "2025-05-21T16:31:32.372Z",
+            "updated": "2025-05-21T16:31:32.370Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 45,
+        "fields": {
+            "name": "Mulberry",
+            "slug": "mulberry",
+            "description": "Sweet and juicy mulberries, perfect for snacking or adding to desserts and cereals.",
+            "price": "4.99",
+            "image": "product_images/Mulberry",
+            "created": "2025-05-21T16:31:38.139Z",
+            "updated": "2025-05-21T16:31:38.137Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 46,
+        "fields": {
+            "name": "Nescafe Coffee",
+            "slug": "nescafe-coffee",
+            "description": "Quality coffee from Nescafe, available in various blends for a rich and satisfying cup.",
+            "price": "7.99",
+            "image": "product_images/Nescafe_Coffee",
+            "created": "2025-05-21T16:31:40.882Z",
+            "updated": "2025-05-21T16:31:40.880Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 47,
+        "fields": {
+            "name": "Potatoes",
+            "slug": "potatoes",
+            "description": "Versatile and starchy potatoes, great for roasting, mashing, or as a side dish.",
+            "price": "2.29",
+            "image": "product_images/Potatoes",
+            "created": "2025-05-21T16:31:44.440Z",
+            "updated": "2025-05-21T16:31:44.438Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 48,
+        "fields": {
+            "name": "Protein Powder",
+            "slug": "protein-powder",
+            "description": "Nutrient-packed protein powder, ideal for supplementing your diet with essential proteins.",
+            "price": "19.99",
+            "image": "product_images/Protein_Powder",
+            "created": "2025-05-21T16:31:48.007Z",
+            "updated": "2025-05-21T16:31:48.006Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 49,
+        "fields": {
+            "name": "Red Onions",
+            "slug": "red-onions",
+            "description": "Flavorful and aromatic red onions, perfect for adding depth to your savory dishes.",
+            "price": "1.99",
+            "image": "product_images/Red_Onions",
+            "created": "2025-05-21T16:31:53.567Z",
+            "updated": "2025-05-21T16:31:53.565Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 50,
+        "fields": {
+            "name": "Rice",
+            "slug": "rice",
+            "description": "High-quality rice, a staple for various cuisines and a versatile base for many dishes.",
+            "price": "5.99",
+            "image": "product_images/Rice",
+            "created": "2025-05-21T16:31:57.198Z",
+            "updated": "2025-05-21T16:31:57.196Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 51,
+        "fields": {
+            "name": "Soft Drinks",
+            "slug": "soft-drinks",
+            "description": "Assorted soft drinks in various flavors, perfect for refreshing beverages.",
+            "price": "1.99",
+            "image": "product_images/Soft_Drinks",
+            "created": "2025-05-21T16:32:01.766Z",
+            "updated": "2025-05-21T16:32:01.764Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 52,
+        "fields": {
+            "name": "Strawberry",
+            "slug": "strawberry",
+            "description": "Sweet and succulent strawberries, great for snacking, desserts, or blending into smoothies.",
+            "price": "3.99",
+            "image": "product_images/Strawberry",
+            "created": "2025-05-21T16:32:07.534Z",
+            "updated": "2025-05-21T16:32:07.532Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 53,
+        "fields": {
+            "name": "Tissue Paper Box",
+            "slug": "tissue-paper-box",
+            "description": "Convenient tissue paper box for everyday use, providing soft and absorbent tissues.",
+            "price": "2.49",
+            "image": "product_images/Tissue_Paper_Box",
+            "created": "2025-05-21T16:32:10.102Z",
+            "updated": "2025-05-21T16:32:10.100Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 54,
+        "fields": {
+            "name": "Water",
+            "slug": "water",
+            "description": "Pure and refreshing bottled water, essential for staying hydrated throughout the day.",
+            "price": "0.99",
+            "image": "product_images/Water",
+            "created": "2025-05-21T16:32:15.669Z",
+            "updated": "2025-05-21T16:32:15.667Z",
+            "category": 8
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 55,
+        "fields": {
+            "name": "Decoration Swing",
+            "slug": "decoration-swing",
+            "description": "The Decoration Swing is a charming addition to your home decor. Crafted with intricate details, it adds a touch of elegance and whimsy to any room.",
+            "price": "59.99",
+            "image": "product_images/Decoration_Swing",
+            "created": "2025-05-21T16:32:21.404Z",
+            "updated": "2025-05-21T16:32:21.402Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 56,
+        "fields": {
+            "name": "Family Tree Photo Frame",
+            "slug": "family-tree-photo-frame",
+            "description": "The Family Tree Photo Frame is a sentimental and stylish way to display your cherished family memories. With multiple photo slots, it tells the story of your loved ones.",
+            "price": "29.99",
+            "image": "product_images/Family_Tree_Photo_Frame",
+            "created": "2025-05-21T16:32:23.986Z",
+            "updated": "2025-05-21T16:32:23.984Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 57,
+        "fields": {
+            "name": "House Showpiece Plant",
+            "slug": "house-showpiece-plant",
+            "description": "The House Showpiece Plant is an artificial plant that brings a touch of nature to your home without the need for maintenance. It adds greenery and style to any space.",
+            "price": "39.99",
+            "image": "product_images/House_Showpiece_Plant",
+            "created": "2025-05-21T16:32:27.754Z",
+            "updated": "2025-05-21T16:32:27.753Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 58,
+        "fields": {
+            "name": "Plant Pot",
+            "slug": "plant-pot",
+            "description": "The Plant Pot is a stylish container for your favorite plants. With a sleek design, it complements your indoor or outdoor garden, adding a modern touch to your plant display.",
+            "price": "14.99",
+            "image": "product_images/Plant_Pot",
+            "created": "2025-05-21T16:32:31.488Z",
+            "updated": "2025-05-21T16:32:31.486Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 59,
+        "fields": {
+            "name": "Table Lamp",
+            "slug": "table-lamp",
+            "description": "The Table Lamp is a functional and decorative lighting solution for your living space. With a modern design, it provides both ambient and task lighting, enhancing the atmosphere.",
+            "price": "49.99",
+            "image": "product_images/Table_Lamp",
+            "created": "2025-05-21T16:32:35.063Z",
+            "updated": "2025-05-21T16:32:35.062Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 60,
+        "fields": {
+            "name": "Bamboo Spatula",
+            "slug": "bamboo-spatula",
+            "description": "The Bamboo Spatula is a versatile kitchen tool made from eco-friendly bamboo. Ideal for flipping, stirring, and serving various dishes.",
+            "price": "7.99",
+            "image": "product_images/Bamboo_Spatula",
+            "created": "2025-05-21T16:32:39.625Z",
+            "updated": "2025-05-21T16:32:39.623Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 61,
+        "fields": {
+            "name": "Black Aluminium Cup",
+            "slug": "black-aluminium-cup",
+            "description": "The Black Aluminium Cup is a stylish and durable cup suitable for both hot and cold beverages. Its sleek black design adds a modern touch to your drinkware collection.",
+            "price": "5.99",
+            "image": "product_images/Black_Aluminium_Cup",
+            "created": "2025-05-21T16:32:43.200Z",
+            "updated": "2025-05-21T16:32:43.198Z",
+            "category": null
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 62,
+        "fields": {
+            "name": "Black Whisk",
+            "slug": "black-whisk",
+            "description": "The Black Whisk is a kitchen essential for whisking and beating ingredients. Its ergonomic handle and sleek design make it a practical and stylish tool.",
+            "price": "9.99",
+            "image": "product_images/Black_Whisk",
+            "created": "2025-05-21T16:32:47.759Z",
+            "updated": "2025-05-21T16:32:47.756Z",
+            "category": null
+        }
+    }
+]
