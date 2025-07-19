@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+
+    {% block title %}
+        Cart
+    {% endblock title %}
+
+  {% block main %}
+
+    <h1>cart</h1>
+    <ol>
+        {% for prod, quantity in  cart.products.items %}
+            <li> {{prod}} -
+
+                    
+            
+                 <form action="{% url 'decrease_url'  prod.slug %}" method="post">
+                    {% csrf_token %}
+                    {{decrease_quantity_form}}
+                    <input type="submit" value="-">
+                </form>
+            
+            
+                     {{quantity}}
+               
+
+
+                    <form action="{% url 'increase_url' prod.slug  %}" method="post">
+                    {% csrf_token %}
+                    {{increase_quantity_form}}
+                    <input type="submit" value="+">
+                </form>
+
+            
+            </li>
+        {% endfor %}   
+    </ol>
+
+    <h2> Total {{cart.total_price}} </h2>
+
+
+   
+    <form action=" {% url 'clear_cart_url'  %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Erase cart">
+    </form>
+
+
+
+
+{% endblock main %}
