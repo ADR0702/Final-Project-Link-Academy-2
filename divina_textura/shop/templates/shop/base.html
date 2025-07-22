@@ -4,18 +4,31 @@
     <meta charset="UTF-8">
     <title>{% block title %}Magazin{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
+    <!-- Font IM Fell English -->
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+
+    <style>
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'IM Fell English', serif;
             background-image: url('https://i.postimg.cc/9QgD7Dq8/home-wall5.png');
             background-size: cover;
             background-position: center;
             min-height: 100vh;
+            position: relative;
+            z-index: 1;
             color: white;
+        }
+
+        /* Overlay alb transparent peste fundal pentru efect soft */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.4); /* sau 0.1 pentru mai accentuat */
+            z-index: 0;
         }
 
         header {
@@ -23,15 +36,17 @@
             align-items: center;
             justify-content: flex-end;
             padding: 15px 30px;
-            /* Fără fundal semitransparent */
+            position: relative;
+            z-index: 1;
         }
 
         nav a {
-            color: white;
-            margin: 0 10px;
+            font-family: 'IM Fell English', serif;
+            color: #815C30;
+            margin: 0 15px;
             text-decoration: none;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 1.1rem;
         }
 
         nav a:hover {
@@ -41,6 +56,8 @@
         main {
             padding: 30px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>

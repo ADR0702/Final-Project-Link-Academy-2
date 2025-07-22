@@ -6,9 +6,9 @@
 <style>
     .icon-cross-home {
         position: absolute;
-        top: 100px;  /* puțin sub header (care are 60px padding) */
+        top: 100px;
         left: 30px;
-        width: 60px;
+        width: 90px; /* mai mare decât 60px */
         height: auto;
         cursor: pointer;
         transition: transform 0.3s ease;
@@ -19,40 +19,37 @@
         transform: scale(1.2);
     }
 
-    .home-text-container {
+    .home-logo-container {
         height: 80vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-family: 'EB Garamond', serif;
-        color: white;
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-        padding: 0 20px;
-        text-align: center;
         position: relative;
         z-index: 1;
     }
 
-    .home-text-container h1 {
-        font-size: 4rem;
-        margin-bottom: 0.3em;
+    .home-logo-container img {
+        max-width: 500px;
+        width: 60%;
+        height: auto;
+        opacity: 0.65; /* opacitate de 65% */
+        transition: opacity 0.3s ease;
     }
 
-    .home-text-container p {
-        font-size: 1.8rem;
-        font-style: italic;
+    .home-logo-container img:hover {
+        opacity: 1; /* complet vizibil la hover */
     }
 </style>
 
-<img src="https://i.postimg.cc/5t1fj1s7/Cross1.png" 
+
+<img src="https://i.postimg.cc/DfcsbGR3/Cross1.png" 
      alt="Categorii" 
      class="icon-cross-home"
      title="Vezi Categorii"
      onclick="window.location.href='{% url 'categories_url' %}'" />
 
-<div class="home-text-container">
-    <h1>Divina Textura</h1>
-    <p>Scripturam proferimus, fidem gerentes, sub gloria Dei</p>
+
+<div class="home-logo-container">
+    <img src="https://i.postimg.cc/Kjwvgsgb/Divina-Textura-Alb.png" alt="Divina Textura Logo" />
 </div>
 {% endblock %}
