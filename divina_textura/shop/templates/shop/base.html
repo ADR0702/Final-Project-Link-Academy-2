@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Magazin{% endblock %}</title>
+    <title>{% block title %}Shop{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font IM Fell English -->
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome actualizat -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
+        :root {
+            --main-color: #6b0e04;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
@@ -17,64 +24,137 @@
             background-size: cover;
             background-position: center;
             min-height: 100vh;
-            position: relative;
-            z-index: 1;
             color: white;
+            position: relative;
         }
 
-        /* Overlay alb transparent peste fundal pentru efect soft */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.4); /* sau 0.1 pentru mai accentuat */
+            background: rgba(255, 255, 255, 0.08);
             z-index: 0;
+            pointer-events: none;
         }
 
         header {
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 15px 30px;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 10px 30px 0 30px;
+            height: 130px;
             position: relative;
             z-index: 1;
         }
 
-        nav a {
-            font-family: 'IM Fell English', serif;
-            color: #540202ff;
-            margin: 0 15px;
-            text-decoration: none;
+        .menu-icon {
+            font-size: 3rem;
+            cursor: pointer;
+            color: var(--main-color);
+            background: none;
+            border: none;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+
+        .logo-header {
+            width: 200px;
+            height: auto;
+            opacity: 0.95;
+            cursor: pointer;
+            margin-top: -10px;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .search-container {
+            flex: 1;
+            display: flex;
+            justify-content: right;
+            margin-top: 0px;
+            margin-right:30px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: right;
+            border-bottom: 2px solid var(--main-color);
+            width: 100%;
+            max-width: 350px;
+            padding: 4px 0;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--main-color);
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .search-box i {
+            color: var(--main-color);
+            margin-left: 10px;
             font-size: 1.2rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: 5px;
+        }
+
+        .header-right a {
+            color: var(--main-color);
+            font-size: 1.3rem;
+            text-decoration: none;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+        .header-right a:hover {
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
         }
     </style>
 </head>
 <body>
+
     <header>
-        <nav>
-            <a href="{% url 'home_url' %}">Acasă</a>
-            <a href="#">Despre noi</a>
-            <a href="{% url 'categories_url' %}">Categorii</a>
-            <a href="#">Contact</a>
-            <a href="#">Coș</a>
-        </nav>
+        <!-- Stânga: Icon meniu + logo -->
+        <div class="left-section">
+            <button class="menu-icon" onclick="window.location.href='{% url 'categories_url' %}'">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="{% url 'home_url' %}">
+                <img src="https://i.postimg.cc/gcLtbWfg/Divina-Textura-Red.png" alt="Logo" class="logo-header">
+            </a>
+        </div>
+
+        <!-- Căutare -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Caută produse...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <!-- Dreapta: Login & Bag -->
+        <div class="header-right">
+            <a href="#"><em>Login</em></a>
+            <a href="#"><i class="fas fa-shopping-bag"></i> <em>Shopping Bag</em></a>
+        </div>
     </header>
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
+
 </body>
 </html>

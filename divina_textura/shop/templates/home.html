@@ -3,53 +3,5 @@
 {% block title %}Acasă{% endblock %}
 
 {% block content %}
-<style>
-    .icon-cross-home {
-        position: absolute;
-        top: 100px;
-        left: 30px;
-        width: 90px; /* mai mare decât 60px */
-        height: auto;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        z-index: 1000;
-    }
-
-    .icon-cross-home:hover {
-        transform: scale(1.2);
-    }
-
-    .home-logo-container {
-        height: 80vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-    }
-
-    .home-logo-container img {
-        max-width: 500px;
-        width: 60%;
-        height: auto;
-        opacity: 0.65; /* opacitate de 65% */
-        transition: opacity 0.3s ease;
-    }
-
-    .home-logo-container img:hover {
-        opacity: 1; /* complet vizibil la hover */
-    }
-</style>
-
-
-<img src="https://i.postimg.cc/DfcsbGR3/Cross1.png" 
-     alt="Categorii" 
-     class="icon-cross-home"
-     title="Vezi Categorii"
-     onclick="window.location.href='{% url 'categories_url' %}'" />
-
-
-<div class="home-logo-container">
-    <img src="https://i.postimg.cc/Kjwvgsgb/Divina-Textura-Alb.png" alt="Divina Textura Logo" />
-</div>
+<!-- Aici poți adăuga conținutul dorit pentru pagina de start -->
 {% endblock %}

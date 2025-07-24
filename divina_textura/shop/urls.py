@@ -1,17 +1,18 @@
 from django.urls import path
-from .views import category_details_view
-from .views import all_categories_view
-from .views import product_details_view
-from .views import home_view
-
+from .views import (
+    home_view,
+    product_details_view,
+    all_categories_view,
+    category_details_view,
+)
 
 urlpatterns = [
+    path("", home_view, name="home_url"),
+    path("details", product_details_view),
 
-	path("", home_view, name="home_url"),
-	path("details", product_details_view),
-	path("categories", all_categories_view, name="categories_url"),
-	path("categories/<slug>", category_details_view),
-    
-	
+    # Pagina cu cele 3 categorii (Women, Men, Kids)
+    path("categories", all_categories_view, name="categories_url"),
 
+    # Detaliile pentru fiecare categorie
+    path("categories/<slug:slug>/", category_details_view, name="category_detail_url"),
 ]

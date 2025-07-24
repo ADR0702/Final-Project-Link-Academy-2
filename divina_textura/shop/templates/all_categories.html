@@ -1,26 +1,21 @@
 {% extends "shop/base.html" %}
 
+{% block title %}
+    Categories
+{% endblock %}
 
-    {% block title %}
-        Categories
-    {% endblock title %}
+{% block content %}
+    <div style="text-align: left; padding: 60px 20px;">
+        <h1 style="font-size: 1.8rem; color: var(--main-color); font-style: italic;">Categories:</h1>
 
-
-  {% block main %}
-    
-
-                <h1>all_categories</h1>
-                <ol>
-                    {% for cat in categories  %}
-
-                        <li>
-                        <a href="categories/{{cat.slug}}"> {{cat.name}}</a>
-                        
-                        </li>
-
-                    {% endfor %}
-                </ol>
-
-
-
-  {% endblock main %}
+        <ul style="list-style: none; padding: 0; font-size: 1.8rem;">
+            {% for cat in categories %}
+                <li style="margin: 20px 0;">
+                    <a href="{% url 'category_detail_url' slug=cat.slug %}" style="color: #6b0e04; text-decoration: none; font-style: italic;">
+                        {{ cat.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
