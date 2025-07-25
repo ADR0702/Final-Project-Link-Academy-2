@@ -6,9 +6,9 @@
 
 {% block content %}
     <div style="text-align: left; padding: 60px 20px;">
-        <h1 style="font-size: 1.8rem; color: var(--main-color); font-style: italic;">Categories:</h1>
+        <h1 style="font-size: 1.3rem; color: var(--main-color); font-style: italic; font-weight: lighter;">categories:</h1>
 
-        <ul style="list-style: none; padding: 0; font-size: 1.8rem;">
+        <ul style="list-style: none; padding: 0; font-size: 1.3rem;">
             {% for cat in categories %}
                 <li style="margin: 20px 0;">
                     <a href="{% url 'category_detail_url' slug=cat.slug %}" style="color: #6b0e04; text-decoration: none; font-style: italic;">

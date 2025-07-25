@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>product_details</title>
-</head>
-<body>
-    <h1>product_details</h1>
-</body>
-</html>
+{% extends "shop/base.html" %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <div style="padding: 60px; text-align: center;">
+        <h1>{{ product.name }}</h1>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 400px;">
+        <p style="font-size: 1.5rem; color: #ccc;">€ {{ product.price }}</p>
+        <p>{{ product.description }}</p>
+    </div>
+{% endblock %}

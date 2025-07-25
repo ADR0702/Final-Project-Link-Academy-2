@@ -15,4 +15,7 @@ urlpatterns = [
 
     # Detaliile pentru fiecare categorie
     path("categories/<slug:slug>/", category_details_view, name="category_detail_url"),
+
+    path("product/<slug:slug>/", product_details_view, name="product_detail_url"),
+
 ]

@@ -1,19 +1,29 @@
 {% extends "shop/base.html" %}
 
+{% block title %}
+    {{ category.name }}
+{% endblock %}
 
-    {% block title %}
-        Categories Details
-    {% endblock title %}
+{% block content %}
+    <div style="padding: 60px; text-align: center;">
+        <h1 style="color: var(--main-color); font-size: 2rem; font-style: italic; font-weight: lighter">
+             <em>{{ category.name }}</em>
+        </h1>
 
-
-  {% block main %}
-
-    <h1>Categoria: {{category}} </h1>
-    <ol>
-        {% for prod in products  %}
-            <li>{{prod.name}}</li>
-        {% endfor %}
-    
-    </ol>
-
-  {% endblock main %}
+        {% if products %}
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;">
+                {% for product in products %}
+                    <a href="{% url 'product_detail_url' slug=product.slug %}" style="text-decoration: none; color: inherit;">
+                        <div style="width: 250px; padding: 20px; background-color: rgba(255,255,255,0.05); border-radius: 10px;">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: auto; border-radius: 6px;">
+                            <h2 style="font-size: 1.3rem; color: var(--main-color); margin-top: 10px; font-style: italic; font-weight: lighter;">{{ product.name }}</h2>
+                            <p style="color: var(--main-color); margin-top: 5px; font-size: 1.2rem;">€ {{ product.price }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="margin-top: 40px;">Nu există produse în această categorie.</p>
+        {% endif %}
+    </div>
+{% endblock %}

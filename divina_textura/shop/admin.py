@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Product, Category
-
+from .models import Subcategory
+from .models import ProductImage    
 # admin.site.register(Product)
 
 
@@ -22,4 +23,6 @@ class CategoryModelAdmin(admin.ModelAdmin):
     search_fields = ("name",)
     prepopulated_fields = {"slug" : ("name",)}
 
+admin.site.register(Subcategory)
+admin.site.register(ProductImage)
 
