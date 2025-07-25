@@ -12,10 +12,10 @@ class Category(models.Model):
     class Meta:
         verbose_name = "categorie"
 
-class Subcategory(models.Model):
+class Subcategories(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField()
-    parent_category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="subcategories")
+    parent_category = models.ManyToManyField(Category, related_name="subcategories")
 
     def __str__(self):
         return f"{self.parent_category.name} - {self.name}"
@@ -31,7 +31,7 @@ class Product(models.Model):
 
     # MODIFICAT:
     categories = models.ManyToManyField(Category)
-    subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, null=True, blank=True)
+    subcategory = models.ForeignKey(Subcategories, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
