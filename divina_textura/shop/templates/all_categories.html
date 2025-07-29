@@ -5,17 +5,78 @@
 {% endblock %}
 
 {% block content %}
-    <div style="text-align: left; padding: 60px 20px;">
-        <h1 style="font-size: 1.3rem; color: var(--main-color); font-style: italic; font-weight: lighter;">categories:</h1>
+<style>
+    .category-item {
+        position: relative;
+        margin: 20px 0;
+    }
 
-        <ul style="list-style: none; padding: 0; font-size: 1.3rem;">
-            {% for cat in categories %}
-                <li style="margin: 20px 0;">
-                    <a href="{% url 'category_detail_url' slug=cat.slug %}" style="color: #6b0e04; text-decoration: none; font-style: italic;">
-                        {{ cat.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+    .subcategory-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 150px;
+        background: white;
+        border: 1px solid #ddd;
+        padding: 10px;
+        z-index: 100;
+        width: 200px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .category-item:hover .subcategory-menu {
+        display: block;
+    }
+
+    .category-link {
+        color: #6b0e04;
+        text-decoration: none;
+        font-style: italic;
+        font-size: 1.2rem;
+        font-weight: lighter;
+    }
+
+    .subcategory-link {
+        display: block;
+        padding: 5px 0;
+        color: #444;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: lighter;
+        font-style: italic;
+        color: #6b0e04
+    }
+
+    .subcategory-link:hover {
+        color: #6b0e04;
+    }
+</style>
+
+<div style="text-align: left; padding: 60px 20px;">
+    <h1 style="font-size: 1.4rem; color: var(--main-color); font-style: italic; font-weight:lighter;">
+        Categories:
+    </h1>
+
+    <ul style="list-style: none; padding: 0;">
+        {% for cat in categories %}
+            <li class="category-item">
+                <a href="{% url 'category_detail_url' slug=cat.slug %}" class="category-link">
+                    {{ cat.name }}
+                </a>
+
+                {% if cat.subcategories.all %}
+                    <ul class="subcategory-menu">
+                        {% for sub in cat.subcategories.all %}
+                            <li>
+                                <a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}" class="subcategory-link">
+                                    {{ sub.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

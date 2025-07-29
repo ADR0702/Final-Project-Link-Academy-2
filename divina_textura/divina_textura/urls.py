@@ -18,13 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),  # pagina principală Home
-    path('shop/', include('shop.urls')),  # produsele mută pe /shop/
+
+    # Mutăm toate rutele din shop direct pe domeniul principal
+    path('', include('shop.urls'), name='home'),
+
+    # Restul aplicațiilor
     path('cart/', include('cart.urls')),
 ]
 
+# Servirea fișierelor media
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

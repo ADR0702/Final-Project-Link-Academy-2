@@ -47,6 +47,11 @@
             z-index: 1;
         }
 
+        .menu-container {
+            position: relative;
+            display: inline-block;
+        }
+
         .menu-icon {
             font-size: 3rem;
             cursor: pointer;
@@ -55,6 +60,70 @@
             border: none;
             margin-right: 20px;
             margin-top: 60px;
+        }
+
+        .categories-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            padding: 10px 0;
+            border: 1px solid #ddd;
+            z-index: 9999;
+            min-width: 180px;
+            list-style: none;
+            color: black;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .category-item {
+            position: relative;
+            padding: 8px 20px;
+        }
+
+        .category-item > a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: lighter;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .category-item:hover > a {
+            color: #000;
+        }
+
+        .subcategory-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px 0;
+            min-width: 160px;
+            list-style: none;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .category-item:hover .subcategory-menu {
+            display: block;
+        }
+
+        .subcategory-menu li a {
+            color: var(--main-color);
+            text-decoration: none;
+            display: block;
+            padding: 6px 20px;
+            white-space: nowrap;
+        }
+
+        .subcategory-menu li a:hover {
+            background-color: #f0f0f0;
+            color: #000;
         }
 
         .logo-header {
@@ -126,17 +195,33 @@
 <body>
 
     <header>
-        <!-- Stânga: Icon meniu + logo -->
         <div class="left-section">
-            <button class="menu-icon" onclick="window.location.href='{% url 'categories_url' %}'">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="menu-container">
+                <button class="menu-icon" onclick="window.location.href='{% url 'categories_url' %}'">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="categories-menu">
+                    {% for cat in categories %}
+                        <li class="category-item">
+                            <a href="{% url 'category_detail_url' slug=cat.slug %}">{{ cat.name }}</a>
+                            {% if cat.subcategories.all %}
+                                <ul class="subcategory-menu">
+                                    {% for sub in cat.subcategories.all %}
+                                        <li><a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}">{{ sub.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
             <a href="{% url 'home_url' %}">
                 <img src="https://i.postimg.cc/wvdJjnBK/Divina-Textura-Red.png" alt="Logo" class="logo-header">
             </a>
         </div>
 
-        <!-- Căutare -->
         <div class="search-container">
             <div class="search-box">
                 <input type="text" placeholder="search product">
@@ -144,7 +229,6 @@
             </div>
         </div>
 
-        <!-- Dreapta: Login & Bag -->
         <div class="header-right">
             <a href="#"><em>login</em></a>
             <a href="#"><i class="fas fa-shopping-bag"></i> <em>shopping bag</em></a>
@@ -156,5 +240,24 @@
         {% endblock %}
     </main>
 
+    <!-- Delay logic added below -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuContainer = document.querySelector('.menu-container');
+            const categoriesMenu = menuContainer.querySelector('.categories-menu');
+            let hideTimeout;
+
+            menuContainer.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                categoriesMenu.style.display = 'block';
+            });
+
+            menuContainer.addEventListener('mouseleave', () => {
+                hideTimeout = setTimeout(() => {
+                    categoriesMenu.style.display = 'none';
+                }, 300); // 300ms delay
+            });
+        });
+    </script>
 </body>
 </html>
