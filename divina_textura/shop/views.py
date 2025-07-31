@@ -1,7 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category, Subcategories
-from .forms import AddToCartForm
+from .forms import AddToCartForm, CustomUserCreationForm
 import pandas as pd
+from django.db.models import Q
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        terms_accepted = request.POST.get('terms') == 'on'
+        gdpr_accepted = request.POST.get('gdpr') == 'on'
+
+        if not terms_accepted:
+            form.add_error(None, "You must accept the Terms and Conditions.")
+        if not gdpr_accepted:
+            form.add_error(None, "You must accept the GDPR policy.")
+
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('registration_success')  # pagina cu mesaj succes înregistrare
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'register.html', {'form': form})
 
 def add_to_cart_view_pandas_version(request, slug):
     try:
@@ -56,3 +79,24 @@ def subcategory_details_view(request, parent_slug, sub_slug):
         'products': products,
         'categories': categories,
     })
+
+def product_search(request):
+    query = request.GET.get('q')
+    results = []
+
+    if query:
+        results = Product.objects.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        )
+
+    return render(request, 'shop/search_results.html', {
+        'query': query,
+        'results': results,
+    })
+def terms_conditions_view(request):
+    return render(request, 'terms_conditions.html')
+
+def gdpr_view(request):
+    return render(request, 'gdpr.html')
+def registration_success_view(request):
+    return render(request, 'registration_success.html')

@@ -1,6 +1,8 @@
 from django import forms
 from .models import ProductImage
 from django.forms.models import BaseInlineFormSet
+from django.contrib.auth.forms import UserCreationForm
+from .models import CustomUser
 
 
 class AddToCartForm(forms.Form):
@@ -38,3 +40,16 @@ class ProductImageInlineFormSet(BaseInlineFormSet):
                 instance.save()
             instances.append(instance)
         return instances
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your email address'
+        })
+    )
+
+    class Meta:
+        model = CustomUser
+        fields = ("email", "password1", "password2")

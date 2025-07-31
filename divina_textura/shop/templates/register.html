@@ -1,0 +1,138 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    Register - Divina Textura
+{% endblock %}
+
+{% block content %}
+<section style="max-width: 400px; margin: 40px auto; padding: 2rem; background-color: #fdfaf6; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); color: var(--main-color); font-family: 'IM Fell English', serif;">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: var(--main-color); font-style: italic; font-weight: lighter;">
+        Create an Account
+    </h2>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div style="margin-bottom: 1.5rem;">
+            <label for="id_email" style="display: block; margin-bottom: 0.3rem; font-style: italic; font-weight: lighter;">Email address</label>
+            {{ form.email }}
+        </div>
+
+        <div style="margin-bottom: 1.5rem; position: relative;">
+            <label for="id_password1" style="display: block; margin-bottom: 0.3rem; font-style: italic; font-weight: lighter;">Password</label>
+            {{ form.password1 }}
+            <button type="button" 
+                onclick="togglePasswordVisibility('id_password1', this)" 
+                style="position: absolute; right: 10px; top: 35px; background: none; border: none; cursor: pointer; color: var(--main-color); font-size: 1rem;" 
+                aria-label="Show/Hide password">
+                <i class="fa fa-eye"></i>
+            </button>
+            <small style="display: block; margin-top: 0.3rem; font-size: 0.8rem; color: #666; font-style: italic; font-weight: lighter; font-family: 'IM Fell English', serif;">
+                {{ form.password1.help_text }}
+            </small>
+        </div>
+
+        <div style="margin-bottom: 1.5rem; position: relative;">
+            <label for="id_password2" style="display: block; margin-bottom: 0.3rem; font-weight: lighter; font-style: italic;">Confirm Password</label>
+            {{ form.password2 }}
+            <button type="button" 
+                onclick="togglePasswordVisibility('id_password2', this)" 
+                style="position: absolute; right: 10px; top: 35px; background: none; border: none; cursor: pointer; color: var(--main-color); font-size: 1rem;" 
+                aria-label="Show/Hide password">
+                <i class="fa fa-eye"></i>
+            </button>
+            <small style="display: block; margin-top: 0.3rem; font-size: 0.8rem; color: #666; font-weight: lighter; font-style: italic;">
+                {{ form.password2.help_text }}
+            </small>
+        </div>
+
+        <!-- Checkbox Terms & Conditions -->
+        <div style="margin-bottom: 1rem; font-style: italic; font-weight: lighter;">
+            <label>
+                <input type="checkbox" name="terms" required>
+                I agree to the <a href="{% url 'terms_conditions' %}" target="_blank" style="color: var(--main-color); text-decoration: underline;">Terms & Conditions</a>
+            </label>
+        </div>
+
+        <!-- Checkbox GDPR -->
+        <div style="margin-bottom: 1.5rem; font-style: italic; font-weight: lighter;">
+            <label>
+                <input type="checkbox" name="gdpr" required>
+                I agree to the <a href="{% url 'gdpr' %}" target="_blank" style="color: var(--main-color); text-decoration: underline;">GDPR Policy</a>
+            </label>
+        </div>
+
+        {% if form.errors %}
+            <div style="color: red; font-size: 0.9rem; margin-bottom: 1rem;">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <div style="text-align: center;">
+            <button type="submit" style="
+                background-color: var(--main-color);
+                color: white;
+                padding: 0.6rem 2rem;
+                border: none;
+                border-radius: 6px;
+                font-weight: 600;
+                font-family: 'IM Fell English', serif;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            " 
+            onmouseover="this.style.backgroundColor='#563d2d'" onmouseout="this.style.backgroundColor='var(--main-color)'">
+                Register
+            </button>
+        </div>
+    </form>
+</section>
+
+<style>
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+        width: 100%;
+        padding: 0.5rem 0.8rem; /* fix padding fara sa stranga la ochi */
+        font-family: 'IM Fell English', serif;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+    }
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+        border-color: var(--main-color);
+        outline: none;
+    }
+    button:focus {
+        outline: none;
+    }
+    input[type="checkbox"] {
+        transform: scale(1.2);
+        margin-right: 0.5rem;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+</style>
+
+<script>
+    function togglePasswordVisibility(fieldId, btn) {
+        const input = document.getElementById(fieldId);
+        const icon = btn.querySelector('i');
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
+
+{% endblock content %}

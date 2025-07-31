@@ -1,0 +1,108 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    Terms & Conditions - Divina Textura
+{% endblock %}
+
+{% block content %}
+<style>
+  /* Fundal logo transparent watermark */
+  .watermark-bg {
+    position: relative;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #fdfaf6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: var(--main-color);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-weight: lighter;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+
+  .watermark-bg::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background-image: url('https://i.postimg.cc/Pr4LPkpX/Divina-Textura-original.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.1;  /* Foarte transparent */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  a {
+    color: var(--main-color);
+    text-decoration: underline;
+    font-style: italic;
+  }
+</style>
+
+<section class="watermark-bg">
+  <div class="content-inner">
+    <h1 style="text-align: center; margin-bottom: 2rem; color: var(--main-color); font-style: italic; font-weight: lighter;">
+        Terms & Conditions / Termeni și Condiții
+    </h1>
+
+    <!-- English -->
+    <p>
+      Welcome to Divina Textura. By accessing or using our services, you agree to comply with and be bound by the following terms and conditions.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      We reserve the right to update or change these terms at any time without prior notice. It is your responsibility to review them regularly.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Your use of our website and services constitutes your acceptance of these terms, including our privacy practices and data handling policies.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      We are committed to protecting your personal data and respecting your privacy according to applicable laws.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      For questions or concerns about these terms, please contact us at 
+      <a href="mailto:info@divinatextura.com">info@divinatextura.com</a>.
+    </p>
+
+    <hr style="margin: 3rem 0; border-color: #ddd;">
+
+    <!-- Romanian -->
+    <p>
+      Bine ați venit la Divina Textura. Prin accesarea sau utilizarea serviciilor noastre, sunteți de acord să respectați următorii termeni și condiții.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Ne rezervăm dreptul de a actualiza sau modifica acești termeni în orice moment, fără notificare prealabilă. Este responsabilitatea dumneavoastră să îi verificați periodic.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Utilizarea site-ului și serviciilor noastre constituie acceptarea acestor termeni, inclusiv a practicilor noastre privind confidențialitatea și prelucrarea datelor.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Ne angajăm să protejăm datele dumneavoastră personale și să respectăm confidențialitatea conform legislației aplicabile.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Pentru întrebări sau nelămuriri legate de acești termeni, vă rugăm să ne contactați la 
+      <a href="mailto:info@divinatextura.com">info@divinatextura.com</a>.
+    </p>
+  </div>
+</section>
+{% endblock %}

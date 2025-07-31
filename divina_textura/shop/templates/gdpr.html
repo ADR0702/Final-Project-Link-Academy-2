@@ -1,0 +1,108 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    GDPR Policy - Divina Textura
+{% endblock %}
+
+{% block content %}
+<style>
+  /* Fundal logo transparent watermark */
+  .watermark-bg {
+    position: relative;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #fdfaf6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: var(--main-color);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-weight: lighter;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+
+  .watermark-bg::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background-image: url('https://i.postimg.cc/Pr4LPkpX/Divina-Textura-original.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.1;  /* Foarte transparent */
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Nu interferează cu interacțiunea */
+    z-index: 0;
+  }
+
+  .content-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  a {
+    color: var(--main-color);
+    text-decoration: underline;
+    font-style: italic;
+  }
+</style>
+
+<section class="watermark-bg">
+  <div class="content-inner">
+    <h1 style="text-align: center; margin-bottom: 2rem; color: var(--main-color); font-style: italic; font-weight: lighter;">
+        GDPR Policy / Politica GDPR
+    </h1>
+
+    <!-- English -->
+    <p>
+      <span style="color: var(--main-color);">Privacy and Data Protection at Divina Textura.</span> We take your privacy seriously and handle your personal data with the utmost care.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      When you register or use our services, you consent to the collection and processing of your data to provide the services, send you communications, and improve your experience.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Your data may also be shared with trusted third-party partners for marketing campaigns or operational purposes, including future collaborations with other companies, always in compliance with data protection laws.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      You have the right to access, correct, or request deletion of your personal data at any time by contacting us.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      For more information, please contact us at 
+      <a href="mailto:info@divinatextura.com">info@divinatextura.com</a>.
+    </p>
+
+    <hr style="margin: 3rem 0; border-color: #ddd;">
+
+    <!-- Romanian -->
+    <p>
+      <span style="color: var(--main-color);">Confidențialitate și Protecția Datelor la Divina Textura.</span> Luăm confidențialitatea dumneavoastră în serios și tratăm datele personale cu cea mai mare grijă.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Atunci când vă înregistrați sau folosiți serviciile noastre, vă dați consimțământul pentru colectarea și prelucrarea datelor dumneavoastră pentru a furniza serviciile, a vă trimite comunicări și a vă îmbunătăți experiența.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Datele dumneavoastră pot fi partajate și cu parteneri terți de încredere pentru campanii de marketing sau scopuri operaționale, inclusiv colaborări viitoare cu alte firme, întotdeauna în conformitate cu legislația privind protecția datelor.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Aveți dreptul de a accesa, corecta sau solicita ștergerea datelor personale în orice moment contactându-ne.
+    </p>
+
+    <p style="margin-top: 1.5rem;">
+      Pentru mai multe informații, vă rugăm să ne contactați la 
+      <a href="mailto:info@divinatextura.com">info@divinatextura.com</a>.
+    </p>
+  </div>
+</section>
+{% endblock %}

@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
+from shop import views as shop_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +29,12 @@ urlpatterns = [
 
     # Restul aplicațiilor
     path('cart/', include('cart.urls')),
+
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+
+    path('register/', shop_views.register, name='register'),
 ]
 
 # Servirea fișierelor media

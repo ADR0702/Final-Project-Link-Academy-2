@@ -1,0 +1,23 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    Registration Successful - Divina Textura
+{% endblock %}
+
+{% block content %}
+<section style="max-width: 500px; margin: 80px auto; padding: 2.5rem; background-color: #fdfaf6; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.1); color: var(--main-color); font-family: 'IM Fell English', serif; text-align: center;">
+    <h2 style="font-style: italic; font-weight: lighter; margin-bottom: 1.5rem;">
+        Registration Successful!
+    </h2>
+    <p style="font-style: italic; font-weight: lighter; font-size: 1.1rem; margin-bottom: 1rem;">
+        Thank you for registering with Divina Textura.
+    </p>
+    <p style="font-style: italic; font-weight: lighter; font-size: 1rem; color: #555;">
+        A confirmation email with a validation link has been sent to your email address.<br>
+        Please check your inbox and follow the instructions to activate your account.
+    </p>
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: #888;">
+        If you don't see the email, please check your spam folder or <a href="{% url 'register' %}" style="color: var(--main-color); text-decoration: underline;">register again</a>.
+    </p>
+</section>
+{% endblock %}
