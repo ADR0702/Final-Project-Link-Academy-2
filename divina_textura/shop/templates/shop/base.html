@@ -55,6 +55,8 @@
             border: none;
             margin-right: 20px;
             margin-top: 60px;
+            position: relative;
+            z-index: 10;
         }
 
         .categories-menu {
@@ -71,6 +73,11 @@
             color: black;
             box-shadow: 0 3px 6px rgba(0,0,0,0.2);
             border-radius: 6px;
+        }
+
+        .menu-container:hover .categories-menu,
+        .categories-menu.visible {
+            display: block;
         }
 
         .category-item {
@@ -189,45 +196,45 @@
 </head>
 <body>
 
-    <header>
-        <div class="left-section">
-            <div class="menu-container">
-                <button class="menu-icon" onclick="window.location.href='{% url 'categories_url' %}'">
-                    <i class="fas fa-bars"></i>
-                </button>
+<header>
+    <div class="left-section">
+        <div class="menu-container">
+            <button class="menu-icon" id="hamburger" aria-label="Toggle categories menu">
+                <i class="fas fa-bars"></i>
+            </button>
 
-                <ul class="categories-menu">
-                    {% for cat in categories %}
-                        <li class="category-item">
-                            <a href="{% url 'category_detail_url' slug=cat.slug %}">{{ cat.name }}</a>
-                            {% if cat.subcategories.all %}
-                                <ul class="subcategory-menu">
-                                    {% for sub in cat.subcategories.all %}
-                                        <li><a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}">{{ sub.name }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <a href="{% url 'home_url' %}">
-                <img src="https://i.postimg.cc/wvdJjnBK/Divina-Textura-Red.png" alt="Logo" class="logo-header">
-            </a>
+            <ul class="categories-menu" id="categoryMenu">
+                {% for cat in categories %}
+                    <li class="category-item">
+                        <a href="{% url 'category_detail_url' slug=cat.slug %}">{{ cat.name }}</a>
+                        {% if cat.subcategories.exists %}
+                            <ul class="subcategory-menu">
+                                {% for sub in cat.subcategories.all %}
+                                    <li><a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}">{{ sub.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
 
-        <div class="search-container">
-            <form class="search-box" method="get" action="{% url 'product_search' %}">
-                <input type="text" name="q" placeholder="search product">
-                <button type="submit" style="background:none; border:none;">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
+        <a href="{% url 'home_url' %}">
+            <img src="https://i.postimg.cc/wvdJjnBK/Divina-Textura-Red.png" alt="Logo" class="logo-header">
+        </a>
+    </div>
 
-        <div class="header-right">
-            {% if user.is_authenticated %}
+    <div class="search-container">
+        <form class="search-box" method="get" action="{% url 'product_search' %}">
+            <input type="text" name="q" placeholder="search product">
+            <button type="submit" style="background:none; border:none;">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="header-right">
+        {% if user.is_authenticated %}
             <a href="#"><i class="fas fa-user"></i> <em>{{ user.username }}</em></a>
             <form method="post" action="{% url 'logout' %}" style="display:inline;">
                 {% csrf_token %}
@@ -235,37 +242,38 @@
                     <i class="fas fa-sign-out-alt"></i> <em>logout</em>
                 </button>
             </form>
-            {% else %}
-                <a href="{% url 'login' %}?next={{ request.path }}"><i class="fas fa-sign-in-alt"></i> <em>login</em></a>
-                <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> <em>register</em></a>
-            {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}"><i class="fas fa-sign-in-alt"></i> <em>login</em></a>
+            <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> <em>register</em></a>
+        {% endif %}
 
-            <a href="#"><i class="fas fa-shopping-bag"></i> <em>shopping bag</em></a>
-        </div>
-    </header>
+        <a href="#"><i class="fas fa-shopping-bag"></i> <em>shopping bag</em></a>
+    </div>
+</header>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuContainer = document.querySelector('.menu-container');
-            const categoriesMenu = menuContainer.querySelector('.categories-menu');
-            let hideTimeout;
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const menuContainer = document.querySelector('.menu-container');
+        const categoryMenu = document.getElementById('categoryMenu');
 
-            menuContainer.addEventListener('mouseenter', () => {
-                clearTimeout(hideTimeout);
-                categoriesMenu.style.display = 'block';
-            });
-
-            menuContainer.addEventListener('mouseleave', () => {
-                hideTimeout = setTimeout(() => {
-                    categoriesMenu.style.display = 'none';
-                }, 300);
-            });
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            categoryMenu.classList.toggle('visible');
         });
-    </script>
+
+        document.addEventListener('click', (e) => {
+            if (!menuContainer.contains(e.target)) {
+                categoryMenu.classList.remove('visible');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

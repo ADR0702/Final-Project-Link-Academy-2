@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Mutăm toate rutele din shop direct pe domeniul principal
-    path('', include('shop.urls'), name='home'),
+    path('', include('shop.urls')),
 
     # Restul aplicațiilor
     path('cart/', include('cart.urls')),

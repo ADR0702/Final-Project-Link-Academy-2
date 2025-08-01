@@ -132,3 +132,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 AUTH_USER_MODEL = 'shop.CustomUser'
+
+DATABASES['old_db'] = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db_old.sqlite3',  # înlocuiește cu numele bazei tale vechi
+}
