@@ -30,16 +30,16 @@ class EraseCartForm(forms.Form):
 
 class ProductImageInlineFormSet(BaseInlineFormSet):
     def save_new(self, form, commit=True):
-        images = self.files.getlist(form.add_prefix('image'))
-        product = form.instance.product if hasattr(form.instance, 'product') else form.instance
-
-        instances = []
-        for image in images:
-            instance = ProductImage(product=product, image=image)
+        # Obține imaginea trimisă (una singură) — Django admin nu suportă multiple implicit
+        image = form.cleaned_data.get('image')
+        if image:
+            instance = form.save(commit=False)
+            instance.image = image
             if commit:
                 instance.save()
-            instances.append(instance)
-        return instances
+            return instance
+        return None
+
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(
