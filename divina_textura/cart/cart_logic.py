@@ -2,85 +2,78 @@ from shop.models import Product
 
 
 class CartLogic:
-	def __init__(self, request):
-		self.request = request
+    def __init__(self, request):
+        self.request = request
+        # Structura cosului: { "slug_size": {"quantity": X, "size": size} }
+        self.produse_existente = request.session.get("cos", {})
 
-		##  { "SLUG" : quantity }
-		self.produse_existente = request.session.get("cos", { })
+    ### Totalul cartului
+    @property
+    def total_price(self):
+        total = 0
+        for key, info in self.produse_existente.items():
+            slug = key.rsplit('_', 1)[0]  # extragem slugul din cheia "slug_size"
+            product = Product.objects.filter(slug=slug).first()
+            if product:
+                total += product.price * info["quantity"]
+        return total
 
-	### Totalul cartului
-	@property
-	def total_price(self):
-		return sum( [product.price * quantity  for product, quantity in self.products.items()] )
+    @property
+    def number_of_products(self):
+        return sum(info["quantity"] for info in self.produse_existente.values())
 
+    ### Produsele din cart si numarul lor (cu marimi)
+    @property
+    def products(self):
+        # Returnează dict cu {product_obj: {"quantity": X, "size": Y, "total_price": Z}}
+        products_dict = {}
+        for key, info in self.produse_existente.items():
+            slug = key.rsplit('_', 1)[0]
+            product = Product.objects.filter(slug=slug).first()
+            if product:
+                total_price = product.price * info["quantity"]
+                products_dict[product] = {
+                    "quantity": info["quantity"],
+                    "size": info["size"],
+                    "total_price": total_price
+                }
+        return products_dict
 
-	@property
-	def number_of_products(self):
-		return sum(self.produse_existente.values())
+    ### Adaugare produs in cart cu marime
+    def add(self, slug, quantity, size="N/A"):
+        key = f"{slug}_{size}"
 
+        existing = self.produse_existente.get(key, {"quantity": 0, "size": size})
+        new_quantity = existing["quantity"] + quantity
 
-	### Produsele din cart si numarul lor
+        if new_quantity <= 0:
+            self.produse_existente.pop(key, None)
+        else:
+            self.produse_existente[key] = {"quantity": new_quantity, "size": size}
 
+        self.request.session["cos"] = self.produse_existente
 
-	@property
-	def products_mai_putin_eficienta(self):
-		product_slugs = self.produse_existente.keys()
+    def increase(self, key):
+        # key = "slug_size"
+        if key in self.produse_existente:
+            self.produse_existente[key]["quantity"] += 1
+            self.request.session["cos"] = self.produse_existente
 
-		real_products = {  }
-		for slug in product_slugs:
-			produsul_efectiv = Product.objects.filter(slug=slug).first()
-			real_products[produsul_efectiv] = self.produse_existente[slug]
+    def decrease(self, key):
+        # key = "slug_size"
+        if key in self.produse_existente:
+            self.produse_existente[key]["quantity"] -= 1
+            if self.produse_existente[key]["quantity"] <= 0:
+                self.produse_existente.pop(key)
+            self.request.session["cos"] = self.produse_existente
 
-		return real_products
-	
+    ### Stergere produs din cart
+    def remove(self, key):
+        if key in self.produse_existente:
+            self.produse_existente.pop(key)
+            self.request.session["cos"] = self.produse_existente
 
-
-	@property
-	def products(self):
-		product_slugs = self.produse_existente.keys()
-
-		products_with_slugs = Product.objects.filter(slug__in=product_slugs)
-		real_products = {  }
-
-		for product in products_with_slugs:
-			real_products[product] = self.produse_existente[product.slug]
-
-		return real_products
-
-	### Adaugare produs in cart
-	def add(self, slug, quantity):
-
-		existing_quantity = self.produse_existente.get(slug, 0) 
-		quantity += existing_quantity
-
-		self.produse_existente[slug] =  quantity
-		
-		if quantity == 0:
-			self.produse_existente.pop(slug)
-
-		self.request.session["cos"] = self.produse_existente
-
-
-
-
-
-	def increase(self, slug):
-		self.add(slug, 1)
-
-	def decrease(self, slug):
-		self.add(slug, -1)
-
-
-
-	### Stergere produs din cart
-	def remove(self, product):
-		pass
-	
-	### Stergere cart
-	def clear(self):
-		self.produse_existente = {}
-		self.request.session["cos"] = {}
-
-
-
-
+    ### Stergere cart
+    def clear(self):
+        self.produse_existente = {}
+        self.request.session["cos"] = {}

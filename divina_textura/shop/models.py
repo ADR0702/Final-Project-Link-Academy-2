@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth import get_user_model
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -48,7 +49,6 @@ class Subcategories(models.Model):
     parent_category = models.ManyToManyField(Category, related_name="subcategories")
 
     def __str__(self):
-        # atenție, parent_category e ManyToMany, deci trebuie să-l afișăm corespunzător
         return f"{', '.join([cat.name for cat in self.parent_category.all()])} - {self.name}"
 
 class Product(models.Model):
@@ -72,3 +72,40 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Imagine pentru {self.product.name}"
+
+
+# Modele noi pentru comenzi:
+
+User = get_user_model()
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+
+    country = models.CharField(max_length=100)
+    county = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    sector = models.CharField(max_length=100, blank=True, null=True)
+    address_details = models.TextField()
+
+    phone = models.CharField(max_length=20)
+    email = models.EmailField(blank=True, null=True)
+
+    PAYMENT_CHOICES = [
+        ('cash', 'Cash on Delivery'),
+        ('card', 'Card Payment'),
+    ]
+    payment_type = models.CharField(max_length=10, choices=PAYMENT_CHOICES)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order #{self.id} by {self.user.email}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    size = models.CharField(max_length=10)
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} (size {self.size})"

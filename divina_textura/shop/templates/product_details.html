@@ -6,7 +6,9 @@
 
 {% block content %}
     <div style="padding: 60px; text-align: center;">
-        <h1 style="font-size: 2rem; color: var(--main-color);font-weight: lighter; font-style: italic;">{{ product.name }}</h1>
+        <h1 style="font-size: 2rem; color: var(--main-color); font-weight: lighter; font-style: italic;">
+            {{ product.name }}
+        </h1>
 
         <!-- Afișare imagini -->
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
@@ -17,7 +19,38 @@
             {% endfor %}
         </div>
 
-        <p style="font-size: 1.5rem; margin-top: 30px; color: var(--main-color);">€ {{ product.price }}</p>
-        <div style="margin-top: 20px; max-width: 600px; margin-inline: auto; font-style: italic; font-size: 1rem; color: var(--main-color);">{{ product.description|linebreaks }}</div>
+        <p style="font-size: 1.5rem; margin-top: 30px; color: var(--main-color);">
+            € {{ product.price }}
+        </p>
+
+        <div style="margin-top: 20px; max-width: 600px; margin-inline: auto; font-style: italic; font-size: 1rem; color: var(--main-color);">
+            {{ product.description|linebreaks }}
+        </div>
+
+        <!-- FORMULAR ADAUGARE ÎN COȘ -->
+        <form method="post" action="{% url 'add_to_cart_url' product.slug %}" style="margin-top: 40px;">
+            {% csrf_token %}
+
+            <!-- Selectare mărime -->
+            <label for="size" style="color: var(--main-color); font-style: italic; font-size: 1rem;">
+                Select size:
+            </label>
+            <select name="size" id="size" required style="padding: 10px; font-size: 1rem; margin-left: 10px; border-radius: 5px; border: 1px solid var(--main-color); color: var(--main-color); font-family: inherit;">
+                <option value="">Choose</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+
+            <!-- Cantitate -->
+            <input type="hidden" name="quantity" value="1">
+
+            <!-- Buton adăugare în coș -->
+            <button type="submit" style="margin-left: 20px; background-color: var(--main-color); color: white; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; font-family: inherit;">
+                Add to bag
+            </button>
+        </form>
     </div>
 {% endblock %}

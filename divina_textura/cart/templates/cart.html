@@ -1,50 +1,74 @@
 {% extends "shop/base.html" %}
 
-    {% block title %}
-        Cart
-    {% endblock title %}
+{% block title %}
+    Cart
+{% endblock %}
 
-  {% block main %}
+{% block content %}
+<main style="padding: 160px 30px 30px 30px; max-width: 1000px; margin: 0 auto; background: rgba(255,255,255,0.03); border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
 
-    <h1>cart</h1>
-    <ol>
-        {% for prod, quantity in  cart.products.items %}
-            <li> {{prod}} -
+    <h1 style="font-size: 2.2rem; color: var(--main-color); text-align: center; margin-bottom: 40px;font-style: italic; font-weight: lighter;">Your Shopping Bag</h1>
 
-                    
-            
-                 <form action="{% url 'decrease_url'  prod.slug %}" method="post">
-                    {% csrf_token %}
-                    {{decrease_quantity_form}}
-                    <input type="submit" value="-">
-                </form>
-            
-            
-                     {{quantity}}
-               
+    {% if cart.products %}
+        <table style="width:100%; border-collapse: collapse; color: white; font-size: 1rem;">
+            <thead>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.3);">
+                    <th style="padding: 12px 8px;">Product</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product, info in cart.products.items %}
+                {% with key=product.slug|stringformat:"s" %}
+                {% with full_key=key|add:"_"|add:info.size %}
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align:center;">
+                    <td style="padding: 12px 8px;">{{ product.name }}</td>
+                    <td>{{ info.size }}</td>
+                    <td>{{ info.quantity }}</td>
+                    <td>€ {{ product.price|floatformat:2 }}</td>
+                    <td>€ {{ info.total_price|floatformat:2 }}</td>
+                    <td>
+                        <form action="{% url 'decrease_url' full_key %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" title="Decrease quantity" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">-</button>
+                        </form>
+                        <form action="{% url 'increase_url' full_key %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" title="Increase quantity" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">+</button>
+                        </form>
+                        <form action="{% url 'remove_url' full_key %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" title="Remove product" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">🗑️</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
+            </tbody>
+        </table>
 
+        <h2 style="margin-top: 30px; text-align:right; font-size: 1.5rem; color: var(--main-color);">
+            Total amount: € {{ cart.total_price|floatformat:2 }}
+        </h2>
 
-                    <form action="{% url 'increase_url' prod.slug  %}" method="post">
-                    {% csrf_token %}
-                    {{increase_quantity_form}}
-                    <input type="submit" value="+">
-                </form>
+        <div style="margin-top: 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <form action="{% url 'clear_cart_url' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" style="padding: 10px 20px; background-color: var(--main-color); color:white; border:none; border-radius: 4px; cursor:pointer; font-size: 1rem;">Clear Cart</button>
+            </form>
 
-            
-            </li>
-        {% endfor %}   
-    </ol>
+            <a href="{% url 'checkout_url' %}">
+                <button style="padding: 10px 20px; background-color: var(--main-color); color:white; border:none; border-radius: 4px; cursor:pointer; font-size: 1rem;">Finish Order</button>
+            </a>
+        </div>
 
-    <h2> Total {{cart.total_price}} </h2>
-
-
-   
-    <form action=" {% url 'clear_cart_url'  %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Erase cart">
-    </form>
-
-
-
-
-{% endblock main %}
+    {% else %}
+        <p style="text-align: center; font-size: 1.2rem; color: white;">Your shopping bag is empty</p>
+    {% endif %}
+</main>
+{% endblock %}

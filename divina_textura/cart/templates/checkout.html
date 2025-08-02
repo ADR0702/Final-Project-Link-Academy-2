@@ -1,0 +1,44 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+<h1>Completează adresa de livrare și modalitatea de plată</h1>
+
+<form method="post" action="{% url 'checkout_process_url' %}">
+    {% csrf_token %}
+
+    <label for="country">Țara:</label>
+    <input type="text" id="country" name="country" required>
+
+    <label for="county">Județ:</label>
+    <input type="text" id="county" name="county" required>
+
+    <label for="city">Oraș:</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="sector">Sector (dacă e București):</label>
+    <input type="text" id="sector" name="sector">
+
+    <label for="address_details">Detalii adresă:</label>
+    <textarea id="address_details" name="address_details" rows="3" required></textarea>
+
+    <label for="phone">Număr telefon:</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <label for="email">Adresă email (opțional):</label>
+    <input type="email" id="email" name="email">
+
+    <p>Metoda de plată:</p>
+    <input type="radio" id="cash" name="payment_type" value="cash" checked>
+    <label for="cash">Cash la curier (cu verificare colet)</label><br>
+
+    <input type="radio" id="card" name="payment_type" value="card">
+    <label for="card">Card (Visa, Mastercard, Maestro)</label><br>
+
+    <button type="submit">Finalizează comanda</button>
+</form>
+
+{% endblock %}

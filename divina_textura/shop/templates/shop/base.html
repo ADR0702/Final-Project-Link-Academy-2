@@ -204,6 +204,7 @@
             align-items: flex-start;
             gap: 30px;
             margin-top: 5px;
+            position: relative;
         }
 
         .header-right a {
@@ -212,11 +213,65 @@
             text-decoration: none;
             font-weight: lighter;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
         }
 
         .header-right a:hover {
             color: white;
             text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+
+        /* Hover box styling */
+        .shopping-bag-hover {
+            display: none;
+            position: absolute;
+            top: 140%;
+            right: 0;
+            width: 320px;
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+
+        .shopping-bag-hover ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .shopping-bag-hover ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .shopping-bag-hover .hover-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .shopping-bag-hover .hover-buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .shopping-bag-hover .hover-buttons a:hover {
+            background-color: #4a0702;
         }
     </style>
 </head>
@@ -233,7 +288,7 @@
                 {% for cat in categories %}
                     <li class="category-item">
                         <a href="{% url 'category_detail_url' slug=cat.slug %}">{{ cat.name }}</a>
-                        {% if cat.subcategories.exists %}
+                        {% if cat.subcategories.count %}
                             <ul class="subcategory-menu">
                                 {% for sub in cat.subcategories.all %}
                                     <li><a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}">{{ sub.name }}</a></li>
@@ -273,7 +328,33 @@
             <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> <em>register</em></a>
         {% endif %}
 
-        <a href="#"><i class="fas fa-shopping-bag"></i> <em>shopping bag</em></a>
+        {% with cart.items.count as item_count %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'cart_url' %}" id="shoppingBagLink" onmouseover="showBagHover()" onmouseout="hideBagHover()" style="cursor: pointer;">
+                    <i class="fas fa-shopping-bag"></i> <em>shopping bag {{ item_count }}</em>
+                </a>
+                <div id="shoppingBagHover" class="shopping-bag-hover" onmouseover="showBagHover()" onmouseout="hideBagHover()">
+                    {% if cart.items.count %}
+                        <strong>Products in bag:</strong>
+                        <ul>
+                            {% for item in cart.items.all %}
+                                <li>{{ item.product.name }} x {{ item.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="hover-buttons">
+                            <a href="{% url 'checkout_url' %}">finish order</a>
+                            <a href="{% url 'cart_url' %}">shopping bag</a>
+                        </div>
+                    {% else %}
+                        <p>The Shopping Bag is Empty.</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}?next=/" id="shoppingBagLink">
+                    <i class="fas fa-shopping-bag"></i> <em>shopping bag {{ item_count }}</em>
+                </a>
+            {% endif %}
+        {% endwith %}
     </div>
 </header>
 
@@ -281,6 +362,19 @@
     {% block content %}
     {% endblock %}
 </main>
+
+<script>
+    let hoverTimeout;
+    function showBagHover() {
+        clearTimeout(hoverTimeout);
+        document.getElementById('shoppingBagHover').style.display = 'block';
+    }
+    function hideBagHover() {
+        hoverTimeout = setTimeout(() => {
+            document.getElementById('shoppingBagHover').style.display = 'none';
+        }, 250);
+    }
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
