@@ -5,40 +5,67 @@
 {% endblock %}
 
 {% block content %}
-<h1>Completează adresa de livrare și modalitatea de plată</h1>
+<main style="max-width: 700px; margin: 50px auto; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); color: var(--main-color);">
 
-<form method="post" action="{% url 'checkout_process_url' %}">
-    {% csrf_token %}
+    <h1 style="font-size: 2rem; font-weight: lighter;  margin-bottom: 30px; font-style: italic; text-align: center;">
+        Completează adresa de livrare și metoda de plată:
+    </h1>
 
-    <label for="country">Țara:</label>
-    <input type="text" id="country" name="country" required>
+    <form method="post" action="{% url 'checkout_process_url' %}" style="display: flex; flex-direction: column; gap: 20px;">
+        {% csrf_token %}
 
-    <label for="county">Județ:</label>
-    <input type="text" id="county" name="county" required>
+        <div style="display: flex; flex-direction: column;">
+            <label for="country">Țara:</label>
+            <input type="text" id="country" name="country" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="city">Oraș:</label>
-    <input type="text" id="city" name="city" required>
+        <div style="display: flex; flex-direction: column;">
+            <label for="county">Județ:</label>
+            <input type="text" id="county" name="county" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="sector">Sector (dacă e București):</label>
-    <input type="text" id="sector" name="sector">
+        <div style="display: flex; flex-direction: column;">
+            <label for="city">Oraș:</label>
+            <input type="text" id="city" name="city" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="address_details">Detalii adresă:</label>
-    <textarea id="address_details" name="address_details" rows="3" required></textarea>
+        <div style="display: flex; flex-direction: column;">
+            <label for="sector">Sector (dacă e București):</label>
+            <input type="text" id="sector" name="sector" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="phone">Număr telefon:</label>
-    <input type="text" id="phone" name="phone" required>
+        <div style="display: flex; flex-direction: column;">
+            <label for="address_details">Detalii adresă:</label>
+            <textarea id="address_details" name="address_details" rows="3" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+        </div>
 
-    <label for="email">Adresă email (opțional):</label>
-    <input type="email" id="email" name="email">
+        <div style="display: flex; flex-direction: column;">
+            <label for="phone">Număr telefon:</label>
+            <input type="text" id="phone" name="phone" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <p>Metoda de plată:</p>
-    <input type="radio" id="cash" name="payment_type" value="cash" checked>
-    <label for="cash">Cash la curier (cu verificare colet)</label><br>
+        <div style="display: flex; flex-direction: column;">
+            <label for="email">Adresă email (opțional):</label>
+            <input type="email" id="email" name="email" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
 
-    <input type="radio" id="card" name="payment_type" value="card">
-    <label for="card">Card (Visa, Mastercard, Maestro)</label><br>
+        <div>
+            <p style="margin-bottom: 10px;">Metoda de plată:</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <label>
+                    <input type="radio" id="cash" name="payment_type" value="cash" checked>
+                    Cash la curier (cu verificare colet)
+                </label>
+                <label>
+                    <input type="radio" id="card" name="payment_type" value="card">
+                    Card (Visa, Mastercard, Maestro)
+                </label>
+            </div>
+        </div>
 
-    <button type="submit">Finalizează comanda</button>
-</form>
-
+        <button type="submit" style="padding: 14px 28px; background-color: var(--main-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.2rem;  margin-top: 20px;">
+            Finalizează comanda
+        </button>
+    </form>
+</main>
 {% endblock %}

@@ -5,70 +5,70 @@
 {% endblock %}
 
 {% block content %}
-<main style="padding: 160px 30px 30px 30px; max-width: 1000px; margin: 0 auto; background: rgba(255,255,255,0.03); border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+<main style="padding: 50px 30px;">
 
-    <h1 style="font-size: 2.2rem; color: var(--main-color); text-align: center; margin-bottom: 40px;font-style: italic; font-weight: lighter;">Your Shopping Bag</h1>
+    <h1 style="font-size: 2rem; color: var(--main-color); text-align: left; margin-bottom: 30px; font-style: italic;">
+        Your Shopping Bag
+    </h1>
 
     {% if cart.products %}
-        <table style="width:100%; border-collapse: collapse; color: white; font-size: 1rem;">
-            <thead>
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.3);">
-                    <th style="padding: 12px 8px;">Product</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product, info in cart.products.items %}
-                {% with key=product.slug|stringformat:"s" %}
-                {% with full_key=key|add:"_"|add:info.size %}
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align:center;">
-                    <td style="padding: 12px 8px;">{{ product.name }}</td>
-                    <td>{{ info.size }}</td>
-                    <td>{{ info.quantity }}</td>
-                    <td>€ {{ product.price|floatformat:2 }}</td>
-                    <td>€ {{ info.total_price|floatformat:2 }}</td>
-                    <td>
-                        <form action="{% url 'decrease_url' full_key %}" method="post" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" title="Decrease quantity" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">-</button>
-                        </form>
-                        <form action="{% url 'increase_url' full_key %}" method="post" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" title="Increase quantity" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">+</button>
-                        </form>
-                        <form action="{% url 'remove_url' full_key %}" method="post" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" title="Remove product" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">🗑️</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endwith %}
-                {% endwith %}
-                {% endfor %}
-            </tbody>
-        </table>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+            {% for product, info in cart.products.items %}
+            {% with key=product.slug|stringformat:"s" %}
+            {% with full_key=key|add:"_"|add:info.size %}
+            <li style="display: flex; align-items: flex-start; margin-bottom: 30px; gap: 20px;">
 
-        <h2 style="margin-top: 30px; text-align:right; font-size: 1.5rem; color: var(--main-color);">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 120px; height: auto; object-fit: cover; border-radius: 4px;">
+
+                <div style="flex: 1;">
+                    <div style="color: var(--main-color); font-size: 1.2rem; font-style: italic;">
+                        <div style="font-weight: light;">{{ product.name }}</div>
+                        <div>Size: {{ info.size }}</div>
+                        <div>Quantity: {{ info.quantity }}</div>
+                        <div>Price: € {{ product.price|floatformat:2 }}</div>
+                        <div>Total: € {{ info.total_price|floatformat:2 }}</div>
+                    </div>
+
+                    <div style="margin-top: 10px; display: flex; gap: 10px;">
+                        <form action="{% url 'decrease_url' full_key %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" title="Decrease" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--main-color);">−</button>
+                        </form>
+                        <form action="{% url 'increase_url' full_key %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" title="Increase" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--main-color);">＋</button>
+                        </form>
+                        <form action="{% url 'remove_url' full_key %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" title="Remove" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--main-color);">🗑️</button>
+                        </form>
+                    </div>
+                </div>
+
+            </li>
+            {% endwith %}
+            {% endwith %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="margin-top: 40px; font-size: 1.5rem; color: var(--main-color); font-style: italic; text-align: left;">
             Total amount: € {{ cart.total_price|floatformat:2 }}
         </h2>
 
-        <div style="margin-top: 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap;">
             <form action="{% url 'clear_cart_url' %}" method="post">
                 {% csrf_token %}
-                <button type="submit" style="padding: 10px 20px; background-color: var(--main-color); color:white; border:none; border-radius: 4px; cursor:pointer; font-size: 1rem;">Clear Cart</button>
+                <button type="submit" style="padding: 10px 20px; background-color: var(--main-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">Clear Cart</button>
             </form>
 
             <a href="{% url 'checkout_url' %}">
-                <button style="padding: 10px 20px; background-color: var(--main-color); color:white; border:none; border-radius: 4px; cursor:pointer; font-size: 1rem;">Finish Order</button>
+                <button style="padding: 10px 20px; background-color: var(--main-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">Finish Order</button>
             </a>
         </div>
 
     {% else %}
-        <p style="text-align: center; font-size: 1.2rem; color: white;">Your shopping bag is empty</p>
+        <p style="text-align: left; font-size: 1.2rem; color: white; padding: 20px 0;">Your shopping bag is empty</p>
     {% endif %}
+
 </main>
 {% endblock %}
