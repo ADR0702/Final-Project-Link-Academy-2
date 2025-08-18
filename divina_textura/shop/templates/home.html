@@ -3,5 +3,191 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<!-- Aici poți adăuga conținutul dorit pentru pagina de start -->
+<style>
+    .hero {
+        height: 80vh;
+        background: url('https://i.postimg.cc/W4m9N7Lq/fashion-hero.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero a {
+        padding: 10px 30px;
+        background: var(--main-color);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: background 0.3s ease;
+        border-radius: 4px;
+    }
+
+    .hero a:hover {
+        background: var(--hover-color);
+    }
+
+    .collections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 50px 30px;
+    }
+
+    .collection-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .collection-card img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .collection-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .collection-card span {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: rgba(0,0,0,0.4);
+        padding: 8px 15px;
+        border-radius: 4px;
+    }
+
+    .products-section {
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .products-section h2 {
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card {
+        background: rgba(255,255,255,0.08);
+        padding: 15px;
+        border-radius: 4px;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    .product-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .product-card p {
+        color: #ccc;
+        margin-bottom: 8px;
+    }
+
+    .product-card a {
+        color: var(--main-color);
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>New Season Arrivals</h1>
+        <p>Discover luxury fashion crafted for elegance.</p>
+        <a href="{% url 'category_detail_url' slug='new-arrivals' %}">Shop Now</a>
+    </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections">
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='women' %}">
+            <img src="https://i.postimg.cc/MHvSPJzg/women-collection.jpg" alt="Women">
+            <span>Women</span>
+        </a>
+    </div>
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='men' %}">
+            <img src="https://i.postimg.cc/0N4x0T5X/men-collection.jpg" alt="Men">
+            <span>Men</span>
+        </a>
+    </div>
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='accessories' %}">
+            <img src="https://i.postimg.cc/2S3zrFVK/accessories.jpg" alt="Accessories">
+            <span>Kids</span>
+        </a>
+    </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+        {% for product in featured_products %}
+        <div class="product-card">
+            <a href="{% url 'product_detail_url' slug=product.slug %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>${{ product.price }}</p>
+                <span>View Product</span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

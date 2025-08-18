@@ -39,12 +39,17 @@ def home_view(request):
     products = Product.objects.all()
     form = AddToCartForm()
     categories = Category.objects.all()
+
+    # poți selecta doar produsele "featured" sau cele mai noi
+    featured_products = Product.objects.all()[:6]
+
     context = {
         "products": products,
+        "featured_products": featured_products,
         "form": form,
         "categories": categories,
     }
-    return render(request, 'all_products.html', context)
+    return render(request, 'home.html', context)
 
 def product_details_view(request, slug):
     product = get_object_or_404(Product, slug=slug)
@@ -100,3 +105,5 @@ def gdpr_view(request):
     return render(request, 'gdpr.html')
 def registration_success_view(request):
     return render(request, 'registration_success.html')
+def delivery_returns_view(request):
+    return render(request, 'shop/deliveryreturns.html')

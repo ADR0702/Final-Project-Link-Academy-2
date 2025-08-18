@@ -27,6 +27,8 @@ urlpatterns = [
     path('terms-conditions/', views.terms_conditions_view, name='terms_conditions'),
     path('gdpr/', views.gdpr_view, name='gdpr'),
     path('registration-success/', views.registration_success_view, name='registration_success'),
+    path('delivery-returns/', views.delivery_returns_view, name='delivery_returns'),
+
 
 
 ]
