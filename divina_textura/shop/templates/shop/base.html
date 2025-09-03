@@ -10,7 +10,7 @@
 
     <style>
         :root {
-            --main-color: #b08d57; /* gold premium */
+            --main-color: #b08d57;
             --hover-color: #111;
             --bg-color: #fdfdfd;
         }
@@ -28,14 +28,13 @@
 
         main {
             padding: 40px 20px;
-            flex: 1; /* împinge footerul jos */
+            flex: 1;
         }
 
-        /* Header fix premium */
         header {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 200;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -45,7 +44,6 @@
             border-bottom: 1px solid rgba(176,141,87,0.2);
         }
 
-        /* Logo */
         .logo-header {
             width: 180px;
             height: auto;
@@ -55,87 +53,80 @@
             transform: scale(1.05);
         }
 
-        /* Meniu */
         .menu-container {
             position: relative;
-            margin-right: 20px;
         }
-
         .menu-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
             background: none;
             border: none;
             color: var(--main-color);
             transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 300;
+            position: relative;
         }
         .menu-icon:hover {
             transform: rotate(90deg);
             color: var(--hover-color);
         }
 
+        /* Meniu stânga, jumătate ecran */
         .categories-menu {
-            opacity: 0;
-            transform: translateY(15px);
-            pointer-events: none;
-            transition: all 0.3s ease;
-            position: absolute;
-            top: 120%;
+            position: fixed;
+            top: 0; /* ajustat cu JS */
             left: 0;
-            background: white;
-            padding: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            min-width: 220px;
+            width: 25%;
+            height: 100vh; /* ajustat cu JS */
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-left: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-100%);
+            transition: all 0.4s ease;
             list-style: none;
+            margin: 0;
+            z-index: 250;
         }
         .categories-menu.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
             pointer-events: auto;
         }
 
-        .category-item > a {
-            display: block;
-            padding: 12px 20px;
+        .categories-menu li {
+            margin: 15px 0;
+        }
+        .categories-menu a {
+            font-size: 1.2rem;
             text-decoration: none;
             color: var(--hover-color);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
-        .category-item > a:hover {
-            background: var(--main-color);
-            color: white;
+        .categories-menu a:hover {
+            color: var(--main-color);
         }
+
         .subcategory-menu {
             display: none;
-            position: absolute;
-            top: 0;
-            left: 100%;
-            background: white;
-            border-radius: 8px;
-            min-width: 200px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            list-style: none;
-            padding: 10px 0;
+            margin-top: 5px;
+            margin-left: 15px;
         }
         .category-item:hover .subcategory-menu {
             display: block;
         }
         .subcategory-menu a {
-            padding: 10px 18px;
-            display: block;
-            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
             color: var(--hover-color);
-            font-size: 0.95rem;
-            transition: background 0.3s ease;
-        }
-        .subcategory-menu a:hover {
-            background: var(--main-color);
-            color: white;
         }
 
-        /* Search */
         .search-container {
             flex: 1;
             display: flex;
@@ -164,7 +155,6 @@
             font-size: 1rem;
         }
 
-        /* Dreapta header */
         .header-right {
             display: flex;
             align-items: center;
@@ -184,7 +174,6 @@
             color: var(--main-color);
         }
 
-        /* Shopping bag hover */
         .shopping-bag-hover {
             display: none;
             position: absolute;
@@ -198,37 +187,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             font-size: 0.9rem;
         }
-        .shopping-bag-hover ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 10px;
-            max-height: 180px;
-            overflow-y: auto;
-        }
-        .shopping-bag-hover ul li {
-            border-bottom: 1px solid #eee;
-            padding: 6px 0;
-        }
-        .hover-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .hover-buttons a {
-            flex: 1;
-            text-align: center;
-            padding: 8px 0;
-            background: var(--main-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-        .hover-buttons a:hover {
-            background: #8d6b3f;
-        }
 
-        /* Footer */
         footer {
             background: #f3f3f3;
             padding: 40px 20px;
@@ -245,17 +204,6 @@
             margin-bottom: 15px;
             color: var(--main-color);
             font-weight: 600;
-        }
-        .footer-col p, .footer-col a {
-            font-size: 0.95rem;
-            color: var(--hover-color);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-            transition: color 0.3s ease;
-        }
-        .footer-col a:hover {
-            color: var(--main-color);
         }
     </style>
 </head>
@@ -307,10 +255,11 @@
             {% if user.is_authenticated %}
                 <div style="position: relative;">
                     <a href="{% url 'cart_url' %}" id="shoppingBagLink" onmouseover="showBagHover()" onmouseout="hideBagHover()">
-                        <i class="fas fa-shopping-bag"></i> ({{ item_count }})
+                        <i class="fas fa-shopping-bag"></i>
+                        {% if item_count > 0 %} ({{ item_count }}){% endif %}
                     </a>
                     <div id="shoppingBagHover" class="shopping-bag-hover" onmouseover="showBagHover()" onmouseout="hideBagHover()">
-                        {% if cart.items.count %}
+                        {% if item_count > 0 %}
                             <strong>Products in bag:</strong>
                             <ul>
                                 {% for item in cart.items.all %}
@@ -327,7 +276,7 @@
                     </div>
                 </div>
             {% else %}
-                <a href="{% url 'login' %}?next=/"><i class="fas fa-shopping-bag"></i> ({{ item_count }})</a>
+                <a href="{% url 'login' %}?next=/"><i class="fas fa-shopping-bag"></i>{% if item_count > 0 %} ({{ item_count }}){% endif %}</a>
             {% endif %}
         {% endwith %}
     </div>
@@ -341,7 +290,7 @@
     <div class="footer-container">
         <div class="footer-col">
             <h4>About Us</h4>
-            <p>Divina Textura is a distinguished boutique dedicated to the sacred mission of bringing Scripture to life through elegant apparel and unique designs. Each piece is crafted with reverence and meticulous care, embedding divine messages and timeless truths into every fiber. Our garments are not simply attire, but expressions of faith—meant to inspire, uplift, and serve as a constant reminder of the sacred light that guides us. At Divina Textura, we honor God through fashion, creating wearable blessings that connect the soul with higher purpose and grace</p>
+            <p>Divina Textura is a distinguished boutique...</p>
         </div>
         <div class="footer-col">
             <h4>Client Services</h4>
@@ -371,16 +320,24 @@
             document.getElementById('shoppingBagHover').style.display = 'none';
         }, 200);
     }
+
     document.addEventListener('DOMContentLoaded', () => {
         const hamburger = document.getElementById('hamburger');
         const menu = document.getElementById('categoryMenu');
-        const menuContainer = document.querySelector('.menu-container');
+        const header = document.querySelector('header');
+
+        // Ajustăm meniul ca să înceapă exact sub header
+        const headerHeight = header.offsetHeight;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = `calc(100vh - ${headerHeight}px)`;
+
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             menu.classList.toggle('visible');
         });
+
         document.addEventListener('click', (e) => {
-            if (!menuContainer.contains(e.target)) {
+            if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
                 menu.classList.remove('visible');
             }
         });
