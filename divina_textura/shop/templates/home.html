@@ -1,0 +1,237 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    .hero {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        background: black;
+    }
+
+    .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .hero-fallback {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.postimg.cc/0QNc0F16/final-home.png") center/cover no-repeat;
+        display: none; /* ascuns inițial */
+        z-index: 1;
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0);
+        z-index: 2;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 3;
+    }
+
+    .hero a {
+        padding: 10px 30px;
+        background: var(--main-color);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: background 0.3s ease;
+        border-radius: 4px;
+    }
+
+    .hero a:hover {
+        background: var(--hover-color);
+    }
+
+    .collections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 50px 30px;
+    }
+
+    .collection-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .collection-card img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        border-radius: 8px;
+    }
+
+    .collection-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .collection-card span {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: rgba(0,0,0,0.4);
+        padding: 8px 15px;
+        border-radius: 4px;
+    }
+
+    .products-section {
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .products-section h2 {
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .product-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+        width: 100%;
+        max-height: 280px;
+        object-fit: contain;
+        background: #f9f9f9;
+        border-radius: 6px;
+        margin-bottom: 15px;
+    }
+
+    .product-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        color: var(--hover-color);
+    }
+
+    .product-card p {
+        color: var(--main-color);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .product-card span {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: var(--main-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <video id="heroVideo" autoplay muted playsinline class="hero-video">
+        <source src="{% static 'videos/hero_divinatextura.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="heroFallback" class="hero-fallback"></div>
+
+    <div class="hero-content">
+        <a id="shopButton" href="{% url 'all_products' %}" style="display:none;">
+            Shop Now
+        </a>
+    </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections">
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='women' %}">
+            <img src="https://i.postimg.cc/9fYdTdv1/unisex-oversized-heavyweight-hoodie-white-front-68cc0a72c2d81.jpg" alt="Women">
+            <span>Women</span>
+        </a>
+    </div>
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='men' %}">
+            <img src="https://i.postimg.cc/ZRhVrY7F/unisex-heavy-blend-hoodie-white-front-687faa4897ecb.jpg" alt="Men">
+            <span>Men</span>
+        </a>
+    </div>
+    <div class="collection-card">
+        <a href="{% url 'category_detail_url' slug='kids' %}">
+            <img src="https://i.postimg.cc/yYLtsBDL/kids-fleece-hoodie-white-front-68cc03dd35686.jpg" alt="Kids">
+            <span>Kids</span>
+        </a>
+    </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+        {% for product in featured_products %}
+        <div class="product-card">
+            <a href="{% url 'product_detail_url' slug=product.slug %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>€{{ product.price }}</p>
+                <span>View Product</span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+  const heroVideo = document.getElementById('heroVideo');
+  const shopButton = document.getElementById('shopButton');
+  const heroFallback = document.getElementById('heroFallback');
+
+  heroVideo.addEventListener('ended', () => {
+    heroVideo.style.display = 'none';      // ascunde video-ul
+    heroFallback.style.display = 'block';  // afișează imaginea finală
+    shopButton.style.display = 'inline-block'; // afișează butonul
+  });
+</script>
+{% endblock %}

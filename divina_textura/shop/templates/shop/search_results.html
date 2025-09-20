@@ -1,0 +1,23 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+<div style="padding: 60px;">
+    <h2 style="color: var(--main-color); margin-bottom: 30px; font-size: 1.6rem; font-weight: lighter; font-style: italic;">Results for "{{ query }}":</h2>
+
+    {% if results %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px;">
+            {% for product in results %}
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); text-align: center;">
+                    <a href="{% url 'product_detail_url' product.slug %}" style="text-decoration: none; color: var(--main-color);">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px;">
+                        <h3 style="margin-top: 15px;">{{ product.name }}</h3>
+                        <p style="color: var(--main-color); font-weight: bold;">{{ product.price }} € </p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p style="font-size: 1.2rem; font-weight: lighter; font-style: italic; color: var(--main-color);">No products found.</p>
+    {% endif %}
+</div>
+{% endblock %}

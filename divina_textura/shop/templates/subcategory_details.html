@@ -1,0 +1,29 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    {{ subcategory.name }} - {{ parent_category.name }}
+{% endblock %}
+
+{% block content %}
+    <div style="padding: 60px 20px;">
+        <h1 style="font-size: 1.2rem; color: #6b0e04; font-style: italic; font-weight: lighter;">
+            {{ parent_category.name }} / {{ subcategory.name }}
+        </h1>
+
+        {% if products %}
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;">
+                {% for product in products %}
+                    <a href="{% url 'product_detail_url' slug=product.slug %}" style="text-decoration: none; color: inherit;">
+                        <div style="width: 250px; padding: 20px; background-color: rgba(255,255,255,0.05); border-radius: 10px;">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: auto; border-radius: 6px;">
+                            <h2 style="font-size: 1.3rem; color: var(--main-color); margin-top: 10px; font-style: italic; font-weight: lighter;">{{ product.name }}</h2>
+                            <p style="color: var(--main-color); margin-top: 5px; font-size: 1.2rem;">€ {{ product.price }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="font-style: italic;">There are no products in this subcategory.</p>
+        {% endif %}
+    </div>
+{% endblock %}

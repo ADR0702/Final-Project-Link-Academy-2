@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Shop{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --main-color: #460303ff;
+      --hover-color: #111;
+      --bg-color: #fff;
+      --header-height: 160px; 
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-color);
+      color: var(--hover-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; padding: 40px 20px; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      height: var(--header-height);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(176,141,87,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .logo-header {
+      width: 150px;
+      transition: transform .25s ease;
+    }
+    .logo-header:hover { transform: scale(1.04); }
+
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .category-menu {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    .category-menu > li {
+      cursor: pointer;
+    }
+    .category-menu > li > a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--hover-color);
+      transition: color .25s ease;
+    }
+    .category-menu > li > a:hover { color: var(--main-color); }
+
+    /* MEGA MENU (plasat manual sub header) */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 1px solid rgba(176,141,87,0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 30px 60px;
+      z-index: 250;
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px 40px;
+    }
+
+    .mega-menu h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: var(--main-color);
+      font-weight: 600;
+    }
+
+    .mega-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mega-menu li { margin: 8px 0; }
+    .mega-menu a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: var(--hover-color);
+      transition: color .2s ease;
+    }
+    .mega-menu a:hover { color: var(--main-color); }
+
+    /* RIGHT ZONE */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .header-right a, .header-right button {
+      text-decoration: none;
+      color: var(--hover-color);
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color .25s ease;
+    }
+    .header-right a:hover, .header-right button:hover { color: var(--main-color); }
+
+    .cart-wrap { position: relative; }
+    .shopping-bag-hover {
+      display: none;
+      position: absolute;
+      top: 120%;
+      right: 0;
+      width: 280px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 14px;
+      font-size: 0.9rem;
+    }
+
+    /* Search */
+    .search-toggle {
+      display: flex;
+      align-items: center;
+    }
+    .search-toggle input {
+      width: 0;
+      opacity: 0;
+      border: 1px solid var(--main-color);
+      border-radius: 20px;
+      padding: 4px 10px;
+      transition: all .3s ease;
+      font-size: 0.9rem;
+      margin-left: 6px;
+    }
+    .search-toggle.active input {
+      width: 160px;
+      opacity: 1;
+    }
+    .search-toggle button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--main-color);
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #f3f3f3;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-col h4 { margin-bottom: 15px; color: var(--main-color); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- LOGO -->
+  <a href="{% url 'home_url' %}">
+    <img src="https://i.postimg.cc/wvdJjnBK/Divina-Textura-Red.png" alt="Logo" class="logo-header">
+  </a>
+
+  <!-- NAV CENTER -->
+  <nav>
+    <ul class="category-menu">
+      {% for cat in categories %}
+        <li data-mega="mega-{{ cat.slug }}">
+          <a href="{% url 'category_detail_url' slug=cat.slug %}">{{ cat.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <!-- RIGHT -->
+  <div class="header-right">
+    <div class="search-toggle" id="searchToggle">
+      <button type="button" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
+      <form method="get" action="{% url 'product_search' %}" style="display:inline;">
+        <input type="text" name="q" placeholder="Search...">
+      </form>
+    </div>
+
+    {% if user.is_authenticated %}
+      <a href="#"><i class="fas fa-user"></i> {{ user.username }}</a>
+      <form method="post" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'login' %}?next={{ request.path }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
+    {% endif %}
+
+    {% with cart.items.count as item_count %}
+      <div class="cart-wrap">
+        <a href="{% url 'cart_url' %}" id="shoppingBagLink" onmouseover="showBagHover()" onmouseout="hideBagHover()">
+          <i class="fas fa-shopping-bag"></i>
+          {% if item_count and item_count > 0 %}
+            ({{ item_count }})
+          {% endif %}
+        </a>
+        <div id="shoppingBagHover" class="shopping-bag-hover" onmouseover="showBagHover()" onmouseout="hideBagHover()">
+          {% if item_count and item_count > 0 %}
+            <strong>Products in bag:</strong>
+            <ul>
+              {% for item in cart.items.all %}
+                <li>{{ item.product.name }} x {{ item.quantity }}</li>
+              {% endfor %}
+            </ul>
+            <div>
+              <a href="{% url 'checkout_url' %}">Finish Order</a> |
+              <a href="{% url 'cart_url' %}">Shopping Bag</a>
+            </div>
+          {% else %}
+            <p>The Shopping Bag is Empty.</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endwith %}
+  </div>
+</header>
+
+<!-- MEGA MENUS separate de header -->
+{% for cat in categories %}
+  {% if cat.subcategories.count %}
+    <div class="mega-menu" id="mega-{{ cat.slug }}">
+      <div class="mega-menu-grid">
+        <div>
+          <h4>{{ cat.name }}</h4>
+          <ul>
+            {% for sub in cat.subcategories.all %}
+              <li><a href="{% url 'subcategory_detail_url' parent_slug=cat.slug sub_slug=sub.slug %}">{{ sub.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-col">
+        <h4>About Us</h4>
+        <a href="{% url 'about_us' %}">Learn more</a>
+    </div>
+    <div class="footer-col">
+      <h4>Client Services</h4>
+      <p>Email: <a href="mailto:contact@divinatextura.com">contact@divinatextura.com</a></p>
+      <p>Tel: <a href="tel:+40751486784">+40 751 486 784</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Delivery & Returns</h4>
+      <a href="{% url 'delivery_returns' %}">Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal Terms</h4>
+      <a href="{% url 'gdpr' %}">GDPR</a>
+      <a href="{% url 'terms_conditions' %}">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Cart hover */
+  let hoverTimeout;
+  function showBagHover() {
+    clearTimeout(hoverTimeout);
+    document.getElementById('shoppingBagHover').style.display = 'block';
+  }
+  function hideBagHover() {
+    hoverTimeout = setTimeout(() => {
+      document.getElementById('shoppingBagHover').style.display = 'none';
+    }, 200);
+  }
+
+  /* Search toggle */
+  function toggleSearch() {
+    document.getElementById('searchToggle').classList.toggle('active');
+  }
+
+  /* Mega-menu control cu delay pentru a permite trecerea pe subcategorii */
+  let megaTimeout;
+
+  // Arată mega-menu-ul țintă când treci peste categoria din nav
+  document.querySelectorAll('.category-menu li').forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      clearTimeout(megaTimeout);
+      const target = li.dataset.mega;
+      document.querySelectorAll('.mega-menu').forEach(m => m.style.display = 'none');
+      if (target) {
+        const panel = document.getElementById(target);
+        if (panel) panel.style.display = 'block';
+      }
+    });
+  });
+
+  // Dacă ieși din header, pornește un delay înainte să ascunzi
+  document.querySelector('header').addEventListener('mouseleave', () => {
+    megaTimeout = setTimeout(() => {
+      document.querySelectorAll('.mega-menu').forEach(m => m.style.display = 'none');
+    }, 300); // delay 300ms
+  });
+
+  // Când intri pe mega-menu, anulează ascunderea
+  document.querySelectorAll('.mega-menu').forEach(menu => {
+    menu.addEventListener('mouseenter', () => {
+      clearTimeout(megaTimeout);
+    });
+    menu.addEventListener('mouseleave', () => {
+      megaTimeout = setTimeout(() => {
+        menu.style.display = 'none';
+      }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>

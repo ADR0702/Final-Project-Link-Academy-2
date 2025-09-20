@@ -1,0 +1,181 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+    Checkout - Divina Textura
+{% endblock %}
+
+{% block content %}
+<style>
+  .checkout-wrapper {
+    max-width: 1000px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+    color: var(--hover-color);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+
+  .checkout-title {
+    grid-column: span 2;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--main-color);
+  }
+
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--hover-color);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--main-color);
+    outline: none;
+  }
+
+  /* Payment column */
+  .payment-section {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .payment-methods p {
+    margin: 0 0 6px;
+    font-weight: 600;
+    color: var(--main-color);
+  }
+
+  .checkout-btn {
+    padding: 16px 28px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .checkout-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+  }
+</style>
+
+<!-- HERO SECTION CU LOGO -->
+<section style="text-align: center; margin-bottom: 40px;">
+  <img src="https://i.postimg.cc/wvdJjnBK/Divina-Textura-Red.png" 
+       alt="Divina Textura Logo" 
+       style="width: 200px; margin-bottom: 20px;">
+  <h1 style="font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--main-color); font-weight: 300; font-style: italic;">
+    Checkout
+  </h1>
+</section>
+
+<main class="checkout-wrapper">
+  <h2 class="checkout-title">
+    Enter your shipping address and payment method:
+  </h2>
+
+  <!-- LEFT COLUMN: Address -->
+  <form method="post" action="{% url 'checkout_process_url' %}" class="checkout-form" id="checkout_form">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required>
+    </div>
+
+    <div class="form-group">
+      <label for="county">State / County:</label>
+      <input type="text" id="county" name="county" required>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required>
+    </div>
+
+    <div class="form-group">
+      <label for="sector">District (if Bucharest):</label>
+      <input type="text" id="sector" name="sector">
+    </div>
+
+    <div class="form-group">
+      <label for="address_details">Address details:</label>
+      <textarea id="address_details" name="address_details" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone number:</label>
+      <input type="text" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" id="email" name="email">
+    </div>
+  </form>
+
+  <!-- RIGHT COLUMN: Payment -->
+  <div class="payment-section">
+    <div class="payment-methods">
+      <p>Payment method:</p>
+      <label>
+        <input type="radio" id="cash" name="payment_type" value="cash" checked form="checkout_form">
+        Cash on delivery (with parcel check)
+      </label>
+      <label>
+        <input type="radio" id="card" name="payment_type" value="card" form="checkout_form">
+        Card (Visa, Mastercard, Maestro)
+      </label>
+    </div>
+
+    <button type="submit" form="checkout_form" class="checkout-btn">
+      Place Order
+    </button>
+  </div>
+</main>
+{% endblock %}
