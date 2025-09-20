@@ -76,7 +76,7 @@
     }
     .category-menu > li > a:hover { color: var(--main-color); }
 
-    /* MEGA MENU (plasat manual sub header) */
+    /* MEGA MENU */
     .mega-menu {
       display: none;
       position: absolute;
@@ -136,18 +136,75 @@
     }
     .header-right a:hover, .header-right button:hover { color: var(--main-color); }
 
+    /* CART */
     .cart-wrap { position: relative; }
     .shopping-bag-hover {
       display: none;
       position: absolute;
-      top: 120%;
+      top: 100%; /* fix sub iconita */
       right: 0;
-      width: 280px;
+      width: 440px;
       background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      padding: 22px;
+      font-size: 0.95rem;
+      z-index: 400;
+    }
+    .cart-wrap:hover .shopping-bag-hover,
+    .shopping-bag-hover:hover {
+      display: block;
+    }
+    .shopping-bag-hover ul {
+      list-style: none;
+      margin: 15px 0;
+      padding: 0;
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .shopping-bag-hover li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 12px;
+    }
+    .shopping-bag-hover img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      padding: 14px;
-      font-size: 0.9rem;
+    }
+    .shopping-bag-hover .product-info {
+      flex: 1;
+    }
+    .shopping-bag-hover .product-info span {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+    .shopping-bag-hover .product-info small {
+      display: block;
+      color: #555;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+    .shopping-bag-hover .product-info .price {
+      color: var(--main-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .shopping-bag-hover .actions {
+      margin-top: 14px;
+      text-align: right;
+    }
+    .shopping-bag-hover .actions a {
+      margin-left: 12px;
+      font-weight: 600;
+      color: var(--main-color);
+      font-size: 0.95rem;
     }
 
     /* Search */
@@ -232,28 +289,36 @@
       <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
     {% endif %}
 
-    {% with cart.items.count as item_count %}
+    <!-- CART -->
+    {% with cart.products as products %}
       <div class="cart-wrap">
-        <a href="{% url 'cart_url' %}" id="shoppingBagLink" onmouseover="showBagHover()" onmouseout="hideBagHover()">
+        <a href="{% url 'cart_url' %}" id="shoppingBagLink">
           <i class="fas fa-shopping-bag"></i>
-          {% if item_count and item_count > 0 %}
-            ({{ item_count }})
+          {% if products %}
+            ({{ products|length }})
           {% endif %}
         </a>
-        <div id="shoppingBagHover" class="shopping-bag-hover" onmouseover="showBagHover()" onmouseout="hideBagHover()">
-          {% if item_count and item_count > 0 %}
+        <div id="shoppingBagHover" class="shopping-bag-hover">
+          {% if products %}
             <strong>Products in bag:</strong>
             <ul>
-              {% for item in cart.items.all %}
-                <li>{{ item.product.name }} x {{ item.quantity }}</li>
+              {% for product, info in products.items %}
+                <li>
+                  <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                  <div class="product-info">
+                    <span>{{ product.name }}</span>
+                    <small>Qty: {{ info.quantity }}</small>
+                    <span class="price">€{{ product.price }}</span>
+                  </div>
+                </li>
               {% endfor %}
             </ul>
-            <div>
-              <a href="{% url 'checkout_url' %}">Finish Order</a> |
-              <a href="{% url 'cart_url' %}">Shopping Bag</a>
+            <div class="actions">
+              <a href="{% url 'checkout_url' %}">Checkout</a>
+              <a href="{% url 'cart_url' %}">View Bag</a>
             </div>
           {% else %}
-            <p>The Shopping Bag is Empty.</p>
+            <p>Your bag is empty.</p>
           {% endif %}
         </div>
       </div>
@@ -261,7 +326,7 @@
   </div>
 </header>
 
-<!-- MEGA MENUS separate de header -->
+<!-- MEGA MENUS -->
 {% for cat in categories %}
   {% if cat.subcategories.count %}
     <div class="mega-menu" id="mega-{{ cat.slug }}">
@@ -307,27 +372,11 @@
 </footer>
 
 <script>
-  /* Cart hover */
-  let hoverTimeout;
-  function showBagHover() {
-    clearTimeout(hoverTimeout);
-    document.getElementById('shoppingBagHover').style.display = 'block';
-  }
-  function hideBagHover() {
-    hoverTimeout = setTimeout(() => {
-      document.getElementById('shoppingBagHover').style.display = 'none';
-    }, 200);
-  }
-
-  /* Search toggle */
   function toggleSearch() {
     document.getElementById('searchToggle').classList.toggle('active');
   }
 
-  /* Mega-menu control cu delay pentru a permite trecerea pe subcategorii */
   let megaTimeout;
-
-  // Arată mega-menu-ul țintă când treci peste categoria din nav
   document.querySelectorAll('.category-menu li').forEach(li => {
     li.addEventListener('mouseenter', () => {
       clearTimeout(megaTimeout);
@@ -339,23 +388,15 @@
       }
     });
   });
-
-  // Dacă ieși din header, pornește un delay înainte să ascunzi
   document.querySelector('header').addEventListener('mouseleave', () => {
     megaTimeout = setTimeout(() => {
       document.querySelectorAll('.mega-menu').forEach(m => m.style.display = 'none');
-    }, 300); // delay 300ms
+    }, 300);
   });
-
-  // Când intri pe mega-menu, anulează ascunderea
   document.querySelectorAll('.mega-menu').forEach(menu => {
-    menu.addEventListener('mouseenter', () => {
-      clearTimeout(megaTimeout);
-    });
+    menu.addEventListener('mouseenter', () => { clearTimeout(megaTimeout); });
     menu.addEventListener('mouseleave', () => {
-      megaTimeout = setTimeout(() => {
-        menu.style.display = 'none';
-      }, 300);
+      megaTimeout = setTimeout(() => { menu.style.display = 'none'; }, 300);
     });
   });
 </script>
